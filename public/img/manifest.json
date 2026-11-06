@@ -1,0 +1,240 @@
+{
+  "vitrine-arcozelo": {
+    "width": 1599,
+    "height": 899,
+    "widths": [
+      640,
+      1200,
+      1599
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "paes-estante": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "pao-frances": {
+    "width": 600,
+    "height": 400,
+    "widths": [
+      480,
+      600
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "sonhos": {
+    "width": 1280,
+    "height": 720,
+    "widths": [
+      480,
+      960,
+      1280
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "bolos-chocolate": {
+    "width": 1170,
+    "height": 855,
+    "widths": [
+      480,
+      960,
+      1170
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "doces-chocolate": {
+    "width": 1170,
+    "height": 1510,
+    "widths": [
+      480,
+      960,
+      1170
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "ilha-paes": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "cafe-neon": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "mercearia": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "fachada-miguel": {
+    "width": 738,
+    "height": 1600,
+    "widths": [
+      480,
+      738
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "bolo-cerejas": {
+    "width": 1600,
+    "height": 900,
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "vitrine-miguel": {
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "torta-surpresa": {
+    "width": 1200,
+    "height": 660,
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "rocambole": {
+    "width": 1040,
+    "height": 585,
+    "widths": [
+      480,
+      960,
+      1040
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "salao-miguel": {
+    "width": 738,
+    "height": 1600,
+    "widths": [
+      480,
+      738
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "balcao-miguel": {
+    "width": 739,
+    "height": 1600,
+    "widths": [
+      480,
+      739
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "tranca-coco": {
+    "width": 1200,
+    "height": 992,
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "cafe-manha": {
+    "width": 1600,
+    "height": 739,
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
+  "torta-pudim": {
+    "width": 1080,
+    "height": 1347,
+    "widths": [
+      480,
+      960,
+      1080
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  },
+  "torta-pudim-duo": {
+    "width": 1080,
+    "height": 972,
+    "widths": [
+      480,
+      960,
+      1080
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  },
+  "bolo-festa": {
+    "width": 1600,
+    "height": 2133,
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  },
+  "padeiros": {
+    "width": 1350,
+    "height": 945,
+    "widths": [
+      480,
+      960,
+      1350
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  }
+}
