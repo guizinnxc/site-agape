@@ -1,0 +1,986 @@
+/* Capítulos II–VI. Cada capítulo tem uma composição própria:
+   fornada = colagem editorial assimétrica; confeitaria = prateleira horizontal;
+   de perto = trio de arcos; casas = painéis preto/dourado e pêssego/terracota;
+   visite = dois cartões. Nenhuma grade se repete. */
+
+/* ---------- Esqueleto dos capítulos (grade com linhas content/full) ---------- */
+
+.chapter:not(.hero) {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--gutter), 1fr)
+    [content-start] minmax(0, var(--content))
+    [content-end] minmax(calc(var(--gutter) + var(--rail)), 1fr)
+    [full-end];
+  align-content: start;
+  row-gap: var(--space-xl);
+  padding-block: var(--space-2xl);
+}
+
+:where(.chapter:not(.hero)) > * {
+  grid-column: content;
+  min-width: 0;
+}
+
+/* Filete dourado curto marcando a entrada de cada capítulo. */
+.chapter:not(.hero)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: var(--space-xl);
+  background: linear-gradient(to bottom, transparent, var(--line));
+}
+
+.chapter__head {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.chapter__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.chapter__roman {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+}
+
+.chapter__eyebrow::after {
+  content: '';
+  flex: 0 1 4.5rem;
+  height: 1px;
+  background: var(--line);
+}
+
+.chapter__title {
+  font-size: var(--step-4);
+  color: var(--cream);
+}
+
+.chapter__intro {
+  max-width: 46ch;
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+@media (min-width: 860px) {
+  .chapter__head {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: end;
+    column-gap: var(--space-xl);
+  }
+
+  .chapter__eyebrow {
+    grid-column: 1 / -1;
+  }
+
+  .chapter__intro {
+    padding-bottom: 0.45em;
+  }
+}
+
+/* ---------- II · A fornada: colagem assimétrica ---------- */
+
+.fornada {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: var(--space-s);
+  row-gap: var(--space-l);
+  align-items: start;
+}
+
+.fornada__item--lead {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-inline: calc(var(--gutter) * -1);
+  --ratio: 4 / 5;
+}
+
+.fornada__item--lead figcaption {
+  padding-inline: var(--gutter);
+}
+
+.fornada__item--offset-a {
+  grid-column: 1 / span 3;
+  grid-row: 2;
+  --ratio: 3 / 4;
+}
+
+.fornada__item--offset-b {
+  grid-column: 4 / span 3;
+  grid-row: 2;
+  margin-top: var(--space-xl);
+  --ratio: 3 / 4;
+}
+
+.fornada__item--detail {
+  grid-column: 2 / -1;
+  grid-row: 3;
+  --ratio: 4 / 3;
+}
+
+.fornada__item--extra {
+  grid-column: 1 / -1;
+  --ratio: 4 / 3;
+}
+
+@media (min-width: 700px) {
+  .fornada__item--lead {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 2;
+    margin-inline: 0;
+    --ratio: 3 / 4;
+  }
+
+  .fornada__item--lead figcaption {
+    padding-inline: 0;
+  }
+
+  .fornada__item--offset-a {
+    grid-column: 5 / span 2;
+    grid-row: 1;
+    margin-top: var(--space-xl);
+  }
+
+  .fornada__item--offset-b {
+    grid-column: 5 / span 2;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  .fornada__item--detail {
+    grid-column: 2 / span 3;
+    grid-row: 3;
+    margin-top: calc(var(--space-l) * -1);
+  }
+
+  .fornada__item--extra {
+    grid-column: auto / span 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fornada {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-m);
+  }
+
+  .fornada__item--lead {
+    grid-column: 1 / span 6;
+    grid-row: 1 / span 2;
+  }
+
+  .fornada__item--offset-a {
+    grid-column: 8 / span 5;
+    grid-row: 1;
+    margin-top: var(--space-l);
+    --ratio: 4 / 3;
+  }
+
+  .fornada__item--offset-b {
+    grid-column: 9 / span 4;
+    grid-row: 2;
+    margin-top: 0;
+    --ratio: 1 / 1;
+  }
+
+  /* Pão francês: recorte pequeno que avança sobre o canto da foto principal. */
+  .fornada__item--detail {
+    grid-column: 5 / span 3;
+    grid-row: 2;
+    align-self: end;
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    margin-bottom: calc(var(--space-l) * -1);
+    padding: 0.6rem 0.6rem 0.2rem;
+    background: var(--ink);
+    --ratio: 1 / 1;
+  }
+
+  .fornada__item--extra {
+    grid-column: auto / span 4;
+  }
+}
+
+/* Padeiros: faixa larga sangrando, legenda sobre a foto. */
+.fornada__band {
+  grid-column: full;
+  position: relative;
+  --ratio: 4 / 3;
+}
+
+.fornada__band img {
+  object-position: 50% 30% !important;
+}
+
+.fornada__band figcaption {
+  position: absolute;
+  left: var(--gutter);
+  bottom: var(--space-m);
+  margin: 0;
+  pointer-events: none;
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--cream);
+  text-shadow: 0 2px 20px rgb(15 13 11 / 0.8);
+}
+
+.fornada__band figcaption::before {
+  display: none;
+}
+
+.fornada__band .shot::after {
+  content: '';
+  position: absolute;
+  inset: 45% 0 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgb(15 13 11 / 0.85), transparent);
+}
+
+@media (min-width: 700px) {
+  .fornada__band {
+    --ratio: 16 / 7;
+  }
+
+  .fornada__band figcaption {
+    left: max(var(--gutter), (100% - var(--content)) / 2);
+    bottom: var(--space-l);
+  }
+}
+
+/* Também no balcão: lista tipográfica, como um quadro de giz. */
+.also-made {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-s);
+  text-align: center;
+}
+
+.also-made__title {
+  font-family: var(--font-text);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.also-made__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2em 0;
+  max-width: 52rem;
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--cream);
+}
+
+.also-made__list li:not(:last-child)::after {
+  content: '·';
+  margin-inline: 0.45em;
+  font-style: normal;
+  color: var(--gold);
+}
+
+/* No celular, vira um quadro de giz: um item por linha. */
+@media (max-width: 559px) {
+  .also-made__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1em;
+  }
+
+  .also-made__list li:not(:last-child)::after {
+    content: none;
+  }
+}
+
+/* ---------- III · Confeitaria: prateleira horizontal ---------- */
+
+.strip {
+  grid-column: content-start / full-end;
+  position: relative;
+  /* No desktop a prateleira termina antes da faixa de capítulos. */
+  margin-right: var(--rail);
+}
+
+.strip__track {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-m);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  padding: var(--space-2xs) var(--gutter) var(--space-m) 0;
+  scroll-padding-inline: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) var(--line-soft);
+  /* A prateleira de vidro da vitrine. */
+  border-bottom: 1px solid var(--line);
+}
+
+.strip__track:focus-visible {
+  outline-offset: 6px;
+}
+
+.strip__item {
+  flex: 0 0 auto;
+  width: min(72vw, 19rem);
+  scroll-snap-align: start;
+}
+
+.strip__item--tall {
+  width: min(80vw, 23rem);
+}
+
+.strip__item .shot {
+  --ratio: 1 / 1;
+}
+
+.strip__item--tall .shot {
+  --ratio: 3 / 4;
+}
+
+.strip__item:nth-child(3n + 2) .shot {
+  --ratio: 4 / 5;
+}
+
+.strip__figure figcaption {
+  align-items: flex-start;
+  min-height: calc(2 * 1.4em);
+}
+
+.strip__figure figcaption::before {
+  margin-top: 0.6em;
+}
+
+@media (min-width: 1024px) {
+  .strip__item {
+    width: clamp(15rem, 21vw, 20rem);
+  }
+
+  .strip__item--tall {
+    width: clamp(18rem, 27vw, 25rem);
+  }
+}
+
+.strip__controls {
+  display: none;
+}
+
+html.js .strip__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  margin-top: var(--space-s);
+  padding-right: var(--gutter);
+}
+
+/* Bolos sob encomenda */
+.encomenda {
+  display: grid;
+  gap: var(--space-l);
+  align-items: center;
+}
+
+.encomenda__figure {
+  --ratio: 4 / 5;
+}
+
+.encomenda__text {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-s);
+  padding: clamp(1.5rem, 1rem + 3vw, 3.5rem);
+  background: var(--brick);
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line-soft);
+  outline-offset: -8px;
+}
+
+.encomenda__tag {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.encomenda__title {
+  font-size: var(--step-3);
+}
+
+.encomenda__motto {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--gold-soft);
+}
+
+.encomenda__text p:not([class]) {
+  max-width: 40ch;
+  color: var(--muted);
+}
+
+.encomenda__text .btn {
+  margin-top: var(--space-2xs);
+}
+
+@media (min-width: 760px) {
+  .encomenda {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 0;
+  }
+
+  /* O painel avança sobre a foto, como uma etiqueta na vitrine. */
+  .encomenda__text {
+    margin-left: calc(var(--space-xl) * -1);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .encomenda {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 5fr);
+    padding-inline: 4%;
+  }
+}
+
+/* ---------- IV · De perto: trio de arcos ---------- */
+
+.chapter--perto {
+  background:
+    radial-gradient(70% 60% at 50% 100%, rgb(201 164 92 / 0.08), transparent 70%),
+    var(--brick);
+}
+
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-l) var(--space-s);
+  align-items: end;
+}
+
+.mosaic__item {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-s);
+}
+
+.mosaic__item .shot {
+  width: 100%;
+  border-radius: 999px 999px 0 0;
+  outline: 1px solid var(--line);
+  outline-offset: 6px;
+  --ratio: 3 / 4;
+}
+
+.mosaic__item .shot:focus-visible {
+  outline: 2px solid var(--gold);
+}
+
+.mosaic__item--1 {
+  grid-column: 1 / -1;
+  width: min(100%, 26rem);
+  justify-self: center;
+}
+
+.mosaic__item--1 .shot {
+  --ratio: 4 / 5;
+}
+
+.mosaic__item--2 .shot {
+  --ratio: 2 / 3;
+}
+
+.mosaic__item--3 {
+  margin-bottom: var(--space-l);
+}
+
+.mosaic__label {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+@media (min-width: 700px) {
+  .mosaic {
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: var(--space-l);
+    padding-inline: 4%;
+  }
+
+  .mosaic__item--1 {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .mosaic__item--1 .shot {
+    --ratio: 3 / 4;
+  }
+
+  .mosaic__item--2 {
+    margin-bottom: var(--space-xl);
+  }
+
+  .mosaic__item--3 {
+    margin-bottom: 0;
+  }
+
+  .mosaic__item--3 .shot {
+    --ratio: 4 / 5;
+  }
+}
+
+/* ---------- V · Duas casas ---------- */
+
+.houses {
+  grid-column: full;
+  display: grid;
+  grid-template-columns: subgrid;
+  row-gap: var(--space-xl);
+}
+
+:where(.houses) > * {
+  grid-column: content;
+  min-width: 0;
+}
+
+/* Com abas ativas, a ponte do café fica depois da casa escolhida. */
+.houses:has(> [role='tablist']:not([hidden])) > .bridge {
+  order: 3;
+}
+
+.houses__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-l);
+  border-bottom: 1px solid var(--line);
+}
+
+.houses__tabs [role='tab'] {
+  position: relative;
+  min-height: 48px;
+  padding: var(--space-2xs) 0 var(--space-xs);
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--muted);
+  transition: color var(--dur-ui) var(--ease);
+}
+
+.houses__tabs [role='tab']:hover {
+  color: var(--cream);
+}
+
+.houses__tabs [role='tab']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-ui) var(--ease);
+}
+
+.houses__tabs [role='tab'][aria-selected='true'] {
+  color: var(--cream);
+}
+
+.houses__tabs [role='tab'][aria-selected='true']::after {
+  transform: scaleX(1);
+}
+
+#tab-miguel-pereira::after {
+  background: var(--terracotta);
+}
+
+.house {
+  display: grid;
+  gap: var(--space-l);
+  align-items: start;
+}
+
+.house__place {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.house__name {
+  margin-block: var(--space-2xs);
+  font-size: var(--step-3);
+}
+
+.house__note {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.house__intro {
+  max-width: 30rem;
+}
+
+.house__gallery {
+  display: grid;
+  gap: var(--space-s);
+  align-items: start;
+}
+
+/* Arcozelo: preto e dourado, moldura dupla como o selo. */
+.house--arcozelo {
+  padding: clamp(1.25rem, 0.5rem + 3.5vw, 3.5rem);
+  border: 1px solid var(--line);
+  outline: 1px solid var(--line-soft);
+  outline-offset: -10px;
+  background:
+    radial-gradient(80% 60% at 0% 0%, rgb(201 164 92 / 0.09), transparent 70%),
+    var(--ink);
+}
+
+.house--arcozelo .house__place {
+  color: var(--gold);
+}
+
+.house--arcozelo .house__name {
+  color: var(--cream);
+}
+
+.house--arcozelo .house__note {
+  color: var(--gold-soft);
+}
+
+.house--arcozelo .house__intro::after {
+  content: '';
+  display: block;
+  width: 4.5rem;
+  height: 1px;
+  margin-top: var(--space-m);
+  background: var(--gold);
+}
+
+.house--arcozelo .house__gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.house--arcozelo .house__shot .shot {
+  --ratio: 3 / 4;
+}
+
+.house--arcozelo .house__shot--2 {
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 860px) {
+  .house--arcozelo {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .house--arcozelo .house__gallery {
+    gap: var(--space-m);
+  }
+}
+
+/* Miguel Pereira: pêssego, texto marrom, acento terracota (logo da casa). */
+.house--miguel-pereira {
+  --focus: var(--brick);
+  grid-column: full;
+  grid-template-columns: subgrid;
+  column-gap: 0;
+  row-gap: var(--space-l);
+  padding-block: var(--space-xl);
+  background: var(--peach);
+  color: var(--brick);
+}
+
+:where(.house--miguel-pereira) > * {
+  grid-column: content;
+  min-width: 0;
+}
+
+.house--miguel-pereira .house__place {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.house--miguel-pereira .house__place::before {
+  content: '';
+  width: 2.5rem;
+  height: 2px;
+  background: var(--terracotta);
+}
+
+.house--miguel-pereira .house__note {
+  color: var(--brick);
+}
+
+.house--miguel-pereira .house__intro::after {
+  content: '';
+  display: block;
+  width: 0.9rem;
+  height: 0.9rem;
+  margin-top: var(--space-m);
+  border-radius: 50%;
+  background: var(--terracotta);
+}
+
+.house--miguel-pereira .house__gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.house--miguel-pereira .shot {
+  background: rgb(26 22 19 / 0.08);
+}
+
+/* A fachada ganha o arco da porta da loja. */
+.house--miguel-pereira .house__shot--1 {
+  grid-column: 1 / -1;
+}
+
+.house--miguel-pereira .house__shot--1 .shot {
+  border-radius: 999px 999px 0 0;
+  --ratio: 4 / 5;
+}
+
+.house--miguel-pereira .house__shot--2 .shot,
+.house--miguel-pereira .house__shot--3 .shot {
+  --ratio: 3 / 5;
+}
+
+.house--miguel-pereira .house__shot--3 {
+  margin-top: var(--space-l);
+}
+
+@media (min-width: 700px) {
+  .house--miguel-pereira .house__gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-m);
+  }
+
+  .house--miguel-pereira .house__shot--1 {
+    grid-column: auto;
+  }
+
+  .house--miguel-pereira .house__shot--1 .shot {
+    --ratio: 1 / 2;
+  }
+
+  .house--miguel-pereira .house__shot--2 {
+    margin-top: var(--space-xl);
+  }
+
+  .house--miguel-pereira .house__shot--3 {
+    margin-top: calc(var(--space-xl) * 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Intro à direita, galeria em escada à esquerda (o inverso de Arcozelo). */
+  .house--miguel-pereira {
+    grid-template-columns:
+      [full-start] minmax(var(--gutter), 1fr)
+      [content-start gallery-start] minmax(0, calc(var(--content) * 0.62))
+      [gallery-end intro-start] minmax(0, calc(var(--content) * 0.38))
+      [intro-end content-end] minmax(calc(var(--gutter) + var(--rail)), 1fr)
+      [full-end];
+    column-gap: 0;
+    align-items: center;
+  }
+
+  .house--miguel-pereira > .house__gallery {
+    grid-column: gallery;
+    grid-row: 1;
+    padding-right: var(--space-xl);
+  }
+
+  .house--miguel-pereira > .house__intro {
+    grid-column: intro;
+    grid-row: 1;
+  }
+}
+
+/* Ponte: o letreiro do café de Arcozelo com o lema em itálico grande. */
+.bridge {
+  display: grid;
+  gap: var(--space-l);
+  align-items: center;
+  --ratio: 4 / 5;
+}
+
+.bridge__motto {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--step-5);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--gold-soft);
+  text-wrap: balance;
+}
+
+.bridge__motto::before {
+  content: '';
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  margin-bottom: var(--space-m);
+  background: var(--gold);
+}
+
+@media (min-width: 760px) {
+  .bridge {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-xl);
+    --ratio: 3 / 4;
+  }
+
+  .bridge__shot {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .bridge__motto {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: right;
+  }
+
+  .bridge__motto::before {
+    margin-left: auto;
+  }
+}
+
+/* ---------- VI · Visite e encomende ---------- */
+
+.visit {
+  display: grid;
+  gap: var(--space-m);
+}
+
+@media (min-width: 700px) {
+  .visit {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.visit__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: clamp(1.5rem, 1rem + 3vw, 3rem);
+}
+
+.visit__title {
+  font-size: var(--step-4);
+}
+
+.visit__name {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.visit__address {
+  max-width: 30ch;
+  margin-top: var(--space-xs);
+  font-size: var(--step-1);
+  line-height: 1.45;
+}
+
+.visit__hours {
+  font-size: var(--step--1);
+}
+
+.visit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: auto;
+  padding-top: var(--space-m);
+}
+
+.visit__card--arcozelo {
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--gold);
+  outline: 1px solid var(--line-soft);
+  outline-offset: -8px;
+}
+
+.visit__card--arcozelo .visit__name {
+  color: var(--gold);
+}
+
+.visit__card--arcozelo .visit__hours {
+  color: var(--muted);
+}
+
+.visit__card--miguel-pereira {
+  --focus: var(--brick);
+  background: var(--peach);
+  color: var(--brick);
+  border-top: 4px solid var(--terracotta);
+}
+
+.visit__whatsapp {
+  justify-self: center;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.visit__whatsapp a {
+  color: var(--gold-soft);
+  white-space: nowrap;
+}

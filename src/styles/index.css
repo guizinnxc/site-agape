@@ -1,0 +1,12 @@
+/* Fontes auto-hospedadas (@fontsource): nenhuma requisição externa. */
+@import '@fontsource/cormorant-garamond/600.css';
+@import '@fontsource/cormorant-garamond/600-italic.css';
+@import '@fontsource/manrope/400.css';
+@import '@fontsource/manrope/600.css';
+
+/* Direção de arte "Vitrine noturna". */
+@import './tokens.css';
+@import './base.css';
+@import './hero.css';
+@import './sections.css';
+@import './components.css';

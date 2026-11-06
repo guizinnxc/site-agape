@@ -1,0 +1,178 @@
+/* Base: reset leve, fundo de tijolinho, tipografia, foco e utilidades. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color-scheme: dark;
+  /* Rede de segurança: os layouts já cabem em 320px. */
+  overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  min-height: 100vh;
+  background-color: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-text);
+  font-size: var(--step-0);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tijolinho: juntas horizontais + juntas verticais alternadas por fiada (duas camadas mascaradas). */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(to bottom, var(--mortar) 0 1px, transparent 1px 30px),
+    repeating-linear-gradient(to right, var(--mortar) 0 1px, transparent 1px 90px);
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 30px, transparent 30px 60px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 30px, transparent 30px 60px);
+}
+
+body::after {
+  background-position: 0 0, 45px 0;
+  -webkit-mask-image: repeating-linear-gradient(to bottom, transparent 0 30px, #000 30px 60px);
+  mask-image: repeating-linear-gradient(to bottom, transparent 0 30px, #000 30px 60px);
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+address {
+  font-style: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--gold-soft);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* Foco sempre visível, dourado. */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+main:focus {
+  outline: none;
+}
+
+/* O atributo hidden sempre vence os display: grid/flex dos componentes. */
+[hidden] {
+  display: none !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-s);
+  left: var(--space-s);
+  z-index: 100;
+  padding: var(--space-xs) var(--space-s);
+  background: var(--gold);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-s);
+  transform: translateY(calc(-100% - 2rem));
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: none;
+  color: var(--ink);
+}
+
+/* Selo SVG: herda a cor dourada. */
+.selo {
+  color: var(--gold);
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.selo--small {
+  width: 3.5rem;
+}
+
+.selo--hero {
+  width: clamp(5.5rem, 4rem + 6vw, 9rem);
+}
+
+.selo--footer {
+  width: clamp(9rem, 6rem + 12vw, 14rem);
+}

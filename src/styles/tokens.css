@@ -1,0 +1,64 @@
+/* Vitrine noturna — tokens da direção de arte (spec §6). */
+:root {
+  /* Paleta */
+  --ink: #0f0d0b;
+  --brick: #1a1613;
+  --gold: #c9a45c;
+  --gold-soft: #e2c98f;
+  --cream: #f3eadb;
+  --muted: #b8ac98;
+  --terracotta: #c98b4a;
+  --peach: #f2dcc4;
+
+  /* Derivados (sempre a partir da paleta) */
+  --line: rgb(201 164 92 / 0.32); /* filete dourado */
+  --line-soft: rgb(201 164 92 / 0.16);
+  --mortar: rgb(226 201 143 / 0.05); /* tijolinho, opacidade ≤ .06 */
+  --veil: rgb(15 13 11 / 0.72);
+  --glow: rgb(226 201 143 / 0.14);
+
+  /* Tipografia */
+  --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
+  --font-text: 'Manrope', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+
+  /* Escala fluida (320 → 1440) */
+  --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.28rem + 1.1vw, 2.25rem);
+  --step-3: clamp(1.9rem, 1.5rem + 2vw, 3.25rem);
+  --step-4: clamp(2.4rem, 1.75rem + 3.2vw, 4.6rem);
+  --step-5: clamp(2.8rem, 1.9rem + 4.6vw, 6.4rem);
+
+  --tracking-caps: 0.22em;
+
+  /* Espaçamentos */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --space-xl: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+  --space-2xl: clamp(4.5rem, 3rem + 7.5vw, 9rem);
+
+  /* Layout */
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --content: 74rem;
+  --rail: 0px; /* largura reservada à faixa de capítulos (desktop) */
+  --bar-h: 56px; /* barra de capítulos no celular */
+  --radius-s: 4px;
+
+  /* Movimento */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-reveal: 600ms;
+  --dur-ui: 300ms;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --rail: 5.5rem;
+    --bar-h: 0px;
+  }
+}

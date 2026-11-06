@@ -1,0 +1,213 @@
+/* Capítulo I — A vitrine acende.
+   A foto nasce numa moldura em arco (eco da porta de Miguel Pereira) e, conforme o
+   visitante rola, se abre até ocupar a tela. O JS define --hero-progress (0→1) enquanto
+   o hero sai da tela; como o hero tem 2 telas de altura e a moldura fica fixa (sticky)
+   durante a primeira, --p normaliza o progresso para terminar a expansão quando a
+   moldura se solta. Sem JS ou com movimento reduzido: estado final, foto inteira. */
+
+.hero {
+  --hero-progress: 1;
+  --p: min(1, calc(var(--hero-progress) * 2));
+  position: relative;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  min-height: 100vh;
+  min-height: 100svh;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--ink);
+}
+
+/* Brilho quente da vitrine atrás do arco; apaga conforme a foto toma a tela. */
+.hero::before {
+  content: '';
+  grid-area: 1 / 1;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  z-index: -1;
+  height: 100vh;
+  height: 100svh;
+  background:
+    radial-gradient(55% 45% at 50% 78%, rgb(226 201 143 / 0.22), transparent 70%),
+    radial-gradient(90% 70% at 50% 100%, rgb(201 139 74 / 0.12), transparent 75%);
+  opacity: calc(1 - var(--p));
+}
+
+.hero__frame {
+  grid-area: 1 / 1;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  transform-origin: 50% 100%;
+  transform: scale(calc(0.82 + 0.18 * var(--p)));
+  /* Arco: raio superior = metade da largura; vai a 0 com o progresso. */
+  clip-path: inset(0 round calc((1 - var(--p)) * 50vw) calc((1 - var(--p)) * 50vw) 0 0);
+}
+
+.hero__picture,
+.hero__picture img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero__picture img {
+  object-fit: cover;
+}
+
+/* Véu escuro: garante contraste AA do título sobre a foto. */
+.hero__frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top,
+      rgb(15 13 11 / 0.96) 0%,
+      rgb(15 13 11 / 0.9) 24%,
+      rgb(15 13 11 / 0.72) 42%,
+      rgb(15 13 11 / 0.22) 64%,
+      rgb(15 13 11 / 0.12) 76%,
+      rgb(15 13 11 / 0.55) 100%
+    );
+}
+
+.hero__content {
+  grid-area: 1 / 1;
+  align-self: start;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-xs);
+  /* Topo: o selo fica no fecho do arco (o arco começa a 18% da altura). */
+  padding: calc(18vh + 1.25rem) var(--gutter) calc(var(--bar-h) + clamp(1.75rem, 7svh, 4.5rem));
+  padding-top: calc(18svh + 1.25rem);
+  text-align: center;
+  text-shadow: 0 1px 18px rgb(15 13 11 / 0.65);
+}
+
+.hero__content .selo {
+  flex-shrink: 0;
+  margin-bottom: auto;
+  filter: drop-shadow(0 2px 14px rgb(15 13 11 / 0.7));
+}
+
+.hero__kicker {
+  max-width: 34ch;
+  font-size: var(--step--1);
+  text-wrap: balance;
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--gold-soft);
+}
+
+.hero__title {
+  max-width: 16ch;
+  font-size: var(--step-5);
+  line-height: 0.95;
+  color: var(--cream);
+}
+
+.hero__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: var(--step-2);
+  line-height: 1.2;
+  color: var(--gold-soft);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-s);
+  text-shadow: none;
+}
+
+@media (max-width: 559px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: min(100%, 22rem);
+  }
+}
+
+/* Celular: o bloco de texto ocupa mais da foto, então o véu sobe junto. */
+@media (max-width: 699px) {
+  .hero__frame::after {
+    background: linear-gradient(
+      to top,
+      rgb(15 13 11 / 0.96) 0%,
+      rgb(15 13 11 / 0.9) 34%,
+      rgb(15 13 11 / 0.74) 56%,
+      rgb(15 13 11 / 0.3) 76%,
+      rgb(15 13 11 / 0.55) 100%
+    );
+  }
+}
+
+/* Telas baixas (celular deitado, 320×640): compacta o bloco para caber no arco. */
+@media (max-height: 700px) {
+  .hero__frame::after {
+    background: linear-gradient(
+      to top,
+      rgb(15 13 11 / 0.96) 0%,
+      rgb(15 13 11 / 0.9) 40%,
+      rgb(15 13 11 / 0.76) 66%,
+      rgb(15 13 11 / 0.4) 84%,
+      rgb(15 13 11 / 0.6) 100%
+    );
+  }
+
+  .hero__content {
+    gap: var(--space-2xs);
+    padding-top: calc(18vh + 0.5rem);
+    padding-top: calc(18svh + 0.5rem);
+    padding-bottom: calc(var(--bar-h) + 1.25rem);
+  }
+
+  .hero__content .selo {
+    width: 4rem;
+  }
+
+  .hero__actions {
+    margin-top: var(--space-2xs);
+    gap: var(--space-2xs);
+  }
+}
+
+/* Com JS e movimento livre: duas telas de rolagem para a moldura se abrir. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .hero {
+    --hero-progress: 0;
+    height: 200vh;
+    height: 200svh;
+  }
+
+  .hero__frame {
+    will-change: transform, clip-path;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before {
+    opacity: 0;
+  }
+
+  .hero__frame {
+    transform: none;
+    clip-path: none;
+  }
+}
