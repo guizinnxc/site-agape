@@ -31,6 +31,10 @@ function renderHtml() {
 
 // Troca o script de módulo por um script clássico com defer e remove `crossorigin`
 // (script e folha de estilo): via file:// o Chrome bloqueia pedidos CORS e o CSS não carregaria.
+// Se o arquivo .js não carregar (bloqueado, rede caiu), `onerror` tira a classe `js` que o
+// script inline pôs no <html>: a página volta ao estado sem JS (tudo visível, sem botões mortos).
+const NO_JS_FALLBACK = `onerror="document.documentElement.classList.remove('js')"`;
+
 function classicScript() {
   return {
     name: 'script-classico',
@@ -39,7 +43,7 @@ function classicScript() {
       order: 'post',
       handler(html) {
         return html
-          .replace('<script type="module" crossorigin', '<script defer')
+          .replace('<script type="module" crossorigin', `<script defer ${NO_JS_FALLBACK}`)
           .replace(/(<(?:script|link)\b[^>]*?)\s+crossorigin(?:=(?:"[^"]*"|'[^']*'|[^\s>]+))?/g, '$1');
       },
     },
