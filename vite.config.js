@@ -29,8 +29,8 @@ function renderHtml() {
   };
 }
 
-// Troca o script de módulo por um script clássico com defer,
-// para que dist/index.html funcione também via file://.
+// Troca o script de módulo por um script clássico com defer e remove `crossorigin`
+// (script e folha de estilo): via file:// o Chrome bloqueia pedidos CORS e o CSS não carregaria.
 function classicScript() {
   return {
     name: 'script-classico',
@@ -38,7 +38,9 @@ function classicScript() {
     transformIndexHtml: {
       order: 'post',
       handler(html) {
-        return html.replace('<script type="module" crossorigin', '<script defer');
+        return html
+          .replace('<script type="module" crossorigin', '<script defer')
+          .replace(/(<(?:script|link)\b[^>]*?)\s+crossorigin(?:=(?:"[^"]*"|'[^']*'|[^\s>]+))?/g, '$1');
       },
     },
   };
@@ -50,6 +52,9 @@ export default defineConfig({
   test: { environment: 'node' },
   build: {
     modulePreload: false,
+    // Com saída iife o Vite embutiria o CSS no JS; sem split ele sai num .css com <link>,
+    // então a página tem estilo mesmo sem JS.
+    cssCodeSplit: false,
     rollupOptions: {
       input: 'index.html',
       output: { format: 'iife' },
