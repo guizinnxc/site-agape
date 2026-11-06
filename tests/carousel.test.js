@@ -24,3 +24,29 @@ describe('initCarousel', () => {
     expect(track.scrollBy).toHaveBeenCalled();
   });
 });
+
+describe('initCarousel: estado dos botões', () => {
+  it('recalcula no resize e quando uma imagem carrega; a limpeza remove os ouvintes', () => {
+    document.body.innerHTML = `<div data-carousel><ul data-carousel-track tabindex="0"><li><img alt=""></li><li>b</li></ul>
+      <button data-carousel-prev></button><button data-carousel-next></button></div>`;
+    const track = document.querySelector('[data-carousel-track]');
+    const next = document.querySelector('[data-carousel-next]');
+    let sw = 200;
+    Object.defineProperty(track, 'scrollWidth', { get: () => sw, configurable: true });
+    Object.defineProperty(track, 'clientWidth', { get: () => 200, configurable: true });
+    Object.defineProperty(track, 'scrollLeft', { value: 200, writable: true, configurable: true });
+    const cleanup = initCarousel(document);
+    expect(next.disabled).toBe(false); // sem estouro: nada a rolar, botão não trava
+    sw = 600;
+    track.scrollLeft = 400;
+    window.dispatchEvent(new Event('resize'));
+    expect(next.disabled).toBe(true);
+    track.scrollLeft = 0;
+    track.querySelector('img').dispatchEvent(new Event('load'));
+    expect(next.disabled).toBe(false);
+    cleanup();
+    track.scrollLeft = 400;
+    window.dispatchEvent(new Event('resize'));
+    expect(next.disabled).toBe(false);
+  });
+});

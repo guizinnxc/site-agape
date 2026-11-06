@@ -31,12 +31,18 @@ export function initCarousel(root = document, { reducedMotion = false } = {}) {
     if (next) next.addEventListener('click', onNext);
     track.addEventListener('keydown', onKey);
     track.addEventListener('scroll', update, { passive: true });
+    // A largura rolável muda com a janela e quando as fotos (lazy) chegam: recalcula os botões.
+    // `load` não borbulha, por isso é ouvido na captura.
+    window.addEventListener('resize', update, { passive: true });
+    track.addEventListener('load', update, true);
     update();
     cleanups.push(() => {
       if (prev) prev.removeEventListener('click', onPrev);
       if (next) next.removeEventListener('click', onNext);
       track.removeEventListener('keydown', onKey);
       track.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+      track.removeEventListener('load', update, true);
     });
   });
   return () => cleanups.forEach((f) => f());
