@@ -95,7 +95,10 @@ function renderVitrine() {
     `</div>` +
     `<div class="hero__content">` +
     renderSelo({ className: 'selo--hero', id: 'selo-hero' }) +
-    `<p class="hero__kicker">Arcozelo · Miguel Pereira · desde ${site.since}</p>` +
+    // Duas partes: no celular "desde 2012" desce para a 2ª linha sem o ponto, e o nome
+    // "Miguel Pereira" nunca se parte (espaço inseparável).
+    `<p class="hero__kicker"><span class="hero__places">Arcozelo · Miguel&nbsp;Pereira</span>` +
+    `<span class="hero__sep"> · </span><span class="hero__since">desde&nbsp;${site.since}</span></p>` +
     `<h1 id="cap-1-title" class="hero__title">${esc(site.name)}</h1>` +
     `<p class="hero__tagline">${esc(site.tagline)}</p>` +
     `<div class="hero__actions">` +

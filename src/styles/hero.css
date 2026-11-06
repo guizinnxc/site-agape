@@ -99,10 +99,13 @@
   flex-shrink: 0;
   margin-bottom: auto;
   filter: drop-shadow(0 2px 14px rgb(15 13 11 / 0.7));
+  /* Halo escuro: o selo continua legível quando a foto já ocupa a tela toda
+     (movimento reduzido, sem JS ou ao fim da expansão). */
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(15 13 11 / 0.62), rgb(15 13 11 / 0.4) 78%, transparent);
 }
 
 .hero__kicker {
-  max-width: 34ch;
   font-size: var(--step--1);
   text-wrap: balance;
   font-weight: 600;
@@ -134,6 +137,22 @@
   gap: var(--space-xs);
   margin-top: var(--space-s);
   text-shadow: none;
+}
+
+/* Celular: o kicker vira duas linhas fixas (lugares / "desde 2012"), sem partir o nome
+   da cidade; no desktop cabe numa linha só. */
+@media (max-width: 699px) {
+  .hero__kicker {
+    letter-spacing: 0.16em;
+  }
+
+  .hero__sep {
+    display: none;
+  }
+
+  .hero__since {
+    display: block;
+  }
 }
 
 @media (max-width: 559px) {
