@@ -1,0 +1,52 @@
+import { describe, it, expect } from 'vitest';
+import { IMAGES } from '../scripts/images.config.mjs';
+import { whatsappUrl, directionsUrl } from '../src/lib/links.js';
+import { site, houses, chapters, products, alsoMade, credits, creditText, pending } from '../src/content.js';
+
+const ids = new Set(IMAGES.map((i) => i.id));
+
+describe('links', () => {
+  it('whatsappUrl sem mensagem', () => {
+    expect(whatsappUrl()).toBe('https://wa.me/5524981100190');
+  });
+  it('whatsappUrl com mensagem codificada', () => {
+    expect(whatsappUrl('Olá, Ágape!')).toBe('https://wa.me/5524981100190?text=Ol%C3%A1%2C%20%C3%81gape!');
+  });
+  it('directionsUrl', () => {
+    expect(directionsUrl(houses[0])).toBe(
+      'https://www.google.com/maps/dir/?api=1&destination=-22.4071627,-43.4226476'
+    );
+  });
+});
+
+describe('conteúdo', () => {
+  it('imagens existem em IMAGES', () => {
+    for (const p of products) expect(ids.has(p.image), p.id).toBe(true);
+    for (const h of houses) for (const im of h.images) expect(ids.has(im.id), im.id).toBe(true);
+  });
+  it('alt com pelo menos 15 caracteres e legendas curtas', () => {
+    for (const p of products) {
+      expect(p.alt.length, p.id).toBeGreaterThanOrEqual(15);
+      expect(p.caption.length, p.id).toBeLessThanOrEqual(70);
+    }
+    for (const h of houses) for (const im of h.images) expect(im.alt.length, im.id).toBeGreaterThanOrEqual(15);
+  });
+  it('sem preço nem horário', () => {
+    const s = JSON.stringify({ site, houses, products, alsoMade });
+    expect(s).not.toMatch(/R\$\s?\d/);
+    expect(s).not.toMatch(/\b\d{1,2}h\s?(às|-|–)\s?\d{1,2}h\b/);
+  });
+  it('capítulos e endereços', () => {
+    expect(chapters.length).toBe(6);
+    expect(houses[0].address).toBe('R. Dr. Mario Kroeff, 95 – Arcozelo, Paty do Alferes – RJ, 26950-000');
+    expect(houses[1].address).toBe('R. Francisco Alves, 57 – Lj 3 – Centro, Miguel Pereira – RJ, 26900-000');
+  });
+  it('demais exports', () => {
+    expect(products.length).toBe(16);
+    expect(alsoMade.length).toBe(5);
+    expect(credits.length).toBe(2);
+    expect(pending.length).toBe(4);
+    expect(creditText.instagram).toBe('Foto: Instagram @padariaagape25');
+    expect(creditText.maps).toBe('Foto: cliente no Google Maps');
+  });
+});
