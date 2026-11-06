@@ -190,9 +190,22 @@ const s1 = () => {
   }
   const hp = js(`getComputedStyle(document.querySelector('[data-hero]')).getPropertyValue('--hero-progress').trim()`);
   check(Number(hp) === 0, `no topo --hero-progress deveria ser 0, é ${hp}`);
+  // Capítulo que já passou do meio da tela é o atual, mesmo com o anterior ainda à vista.
+  const at30 = [];
+  for (const n of [5, 2]) {
+    const top = js(`(() => {
+      const el = document.getElementById('cap-${n}');
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - innerHeight * 0.3, behavior: 'instant' });
+      return Math.round(el.getBoundingClientRect().top);
+    })()`);
+    pause(600);
+    const cur = js(`document.querySelector('.chapters__link[aria-current="true"]')?.dataset.chapterLink`);
+    check(cur === String(n), `cap-${n} com o topo a ${top}px (30% da tela): o atual é ${cur}`);
+    at30.push(`cap-${n} topo ${top}px → ${cur}`);
+  }
   const problems = pageProblems();
   check(problems.length === 0, problems.join(' | '));
-  return '6 capítulos, capítulo atual correto descendo e subindo, sem erros no console';
+  return `6 capítulos, capítulo atual correto descendo e subindo (${at30.join(', ')}), sem erros no console`;
 };
 
 const s2 = () => {

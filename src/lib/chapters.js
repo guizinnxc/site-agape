@@ -12,23 +12,13 @@ export function initChapters(root = document, { observerFactory } = {}) {
     observerFactory ||
     (typeof IntersectionObserver !== 'undefined' ? (cb, o) => new IntersectionObserver(cb, o) : null);
   if (make && sections.length) {
-    const ratios = new Map();
+    // Linha no meio da tela: o capítulo atual é a seção que a cruza, curta ou longa.
     const io = make(
       (entries) => {
-        entries.forEach((en) =>
-          ratios.set(en.target.dataset.chapter, en.isIntersecting ? en.intersectionRatio : 0),
-        );
-        let best = null;
-        let max = 0;
-        ratios.forEach((r, n) => {
-          if (r > max) {
-            max = r;
-            best = n;
-          }
-        });
-        if (best) setCurrentChapter(root, best);
+        const hit = entries.find((en) => en.isIntersecting);
+        if (hit) setCurrentChapter(root, hit.target.dataset.chapter);
       },
-      { threshold: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1] },
+      { rootMargin: '-50% 0px -49.9% 0px', threshold: 0 },
     );
     sections.forEach((s) => io.observe(s));
     cleanups.push(() => io.disconnect());
