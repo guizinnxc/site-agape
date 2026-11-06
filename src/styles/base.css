@@ -11,6 +11,9 @@ html {
   color-scheme: dark;
   /* Rede de segurança: os layouts já cabem em 320px. */
   overflow-x: clip;
+  /* No celular a barra de capítulos é fixa embaixo: elementos focados não ficam atrás dela.
+     (O cabeçalho é absoluto, não fixo, então o topo não precisa de recuo.) */
+  scroll-padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom, 0px));
 }
 
 @media (prefers-reduced-motion: no-preference) {

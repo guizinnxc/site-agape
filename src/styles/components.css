@@ -313,16 +313,23 @@
     padding-inline: 0.6rem 0.8rem;
   }
 
+  /* Nome do capítulo atual: até duas linhas, para nunca virar "VISITE E ENCOM…". */
   .chapters__link[aria-current='true'] .chapters__name {
     position: static;
     width: auto;
     height: auto;
     overflow: hidden;
     clip-path: none;
-    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+    text-wrap: balance;
     font-size: var(--step--2);
     font-weight: 600;
-    letter-spacing: 0.08em;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--cream);
   }
