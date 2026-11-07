@@ -179,7 +179,7 @@
     margin-top: 0;
     margin-bottom: calc(var(--space-l) * -1);
     padding: 0.6rem 0.6rem 0.2rem;
-    background: var(--ink);
+    background: var(--section-bg, var(--ink));
     --ratio: 1 / 1;
   }
 
@@ -396,9 +396,7 @@ html.js .strip__controls {
 /* ---------- IV · De perto: trio de arcos ---------- */
 
 .chapter--perto {
-  background:
-    radial-gradient(70% 60% at 50% 100%, rgb(201 164 92 / 0.08), transparent 70%),
-    var(--brick);
+  background: radial-gradient(70% 60% at 50% 100%, rgb(201 164 92 / 0.08), transparent 70%);
 }
 
 .mosaic {
@@ -914,4 +912,110 @@ html.js .strip__controls {
 .visit__whatsapp a {
   color: var(--gold-soft);
   white-space: nowrap;
+}
+
+/* ---------- Ritmo de fundos ----------
+   I preto · II tijolo · III creme · IV preto · V tijolo · VI creme · rodapé preto.
+   O tijolinho desenhado (body::before/after) só aparece nas seções pretas, que não
+   pintam fundo. Nas seções claras o texto é marrom/preto e a terracota fica nos filetes
+   e acentos gráficos; dourado nunca vira texto sobre o creme. */
+
+.chapter--fornada,
+.chapter--casas {
+  --section-bg: var(--brick);
+  background: var(--brick);
+}
+
+.chapter--confeitaria,
+.chapter--visite {
+  --section-bg: var(--cream);
+  --focus: var(--brick);
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.chapter--confeitaria::before,
+.chapter--visite::before {
+  background: linear-gradient(to bottom, transparent, var(--terracotta));
+}
+
+.chapter--confeitaria .chapter__title,
+.chapter--visite .chapter__title {
+  color: var(--ink);
+}
+
+.chapter--confeitaria .chapter__intro,
+.chapter--visite .chapter__intro,
+.chapter--visite .visit__whatsapp {
+  color: rgb(26 22 19 / 0.8);
+}
+
+.chapter--confeitaria a:hover,
+.chapter--visite a:hover {
+  color: inherit;
+}
+
+/* Confeitaria sobre o creme: prateleira com filete terracota, legendas em marrom. */
+.chapter--confeitaria .strip__track {
+  border-bottom-color: var(--terracotta);
+  scrollbar-color: var(--terracotta) rgb(26 22 19 / 0.12);
+}
+
+.chapter--confeitaria .strip__figure figcaption {
+  color: var(--brick);
+}
+
+.chapter--confeitaria .strip__figure figcaption::before {
+  background: var(--terracotta);
+}
+
+.chapter--confeitaria .strip__btn {
+  border-color: var(--brick);
+  background: transparent;
+  color: var(--brick);
+}
+
+.chapter--confeitaria .strip__btn::before,
+.chapter--confeitaria .strip__btn::after {
+  color: var(--brick);
+}
+
+.chapter--confeitaria .strip__btn:hover:not(:disabled) {
+  border-color: var(--brick);
+  background: rgb(26 22 19 / 0.08);
+}
+
+/* O painel da encomenda continua escuro: uma etiqueta preta na vitrine clara. */
+.chapter--confeitaria .encomenda__text {
+  --focus: var(--gold);
+  color: var(--cream);
+}
+
+.chapter--confeitaria .encomenda__text a:hover {
+  color: var(--ink);
+}
+
+/* Visite sobre o creme: o cartão de Miguel Pereira ganha borda para se destacar. */
+.chapter--visite .visit__card--arcozelo {
+  --focus: var(--gold);
+  color: var(--cream);
+}
+
+.chapter--visite .visit__card--arcozelo a:hover {
+  color: var(--ink);
+}
+
+.chapter--visite .visit__card--arcozelo .btn--ghost:hover {
+  color: var(--cream);
+}
+
+.chapter--visite .visit__card--miguel-pereira {
+  border: 1px solid rgb(26 22 19 / 0.18);
+  border-top: 4px solid var(--terracotta);
+}
+
+.chapter--visite .visit__whatsapp a {
+  color: var(--ink);
+  text-decoration-color: var(--terracotta);
+  text-decoration-thickness: 2px;
 }
