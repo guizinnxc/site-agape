@@ -212,7 +212,7 @@ function housePanel(h) {
     .map(
       (im, i) =>
         `<li class="house__shot house__shot--${i + 1}">` +
-        renderShot(im.id, { alt: im.alt, caption: im.alt, sizes: '(min-width: 1024px) 30vw, (min-width: 700px) 45vw, 90vw' }) +
+        renderShot(im.id, { alt: im.alt, caption: im.caption, sizes: '(min-width: 1024px) 30vw, (min-width: 700px) 45vw, 90vw' }) +
         `</li>`
     )
     .join('');

@@ -38,9 +38,9 @@ export const houses = [
     note: 'Casa reinaugurada em 2 de outubro de 2026',
     accent: 'gold',
     images: [
-      { id: 'ilha-paes', alt: 'Ilha central da padaria de Arcozelo com pães expostos' },
-      { id: 'cafe-neon', alt: 'Canto do café na loja de Arcozelo, com letreiro luminoso ao fundo' },
-      { id: 'mercearia', alt: 'Prateleiras da mercearia dentro da loja de Arcozelo' },
+      { id: 'ilha-paes', caption: 'Pães na ilha', alt: 'Ilha central da padaria de Arcozelo com pães expostos' },
+      { id: 'cafe-neon', caption: 'Letreiro do café', alt: 'Canto do café na loja de Arcozelo, com letreiro luminoso ao fundo' },
+      { id: 'mercearia', caption: 'Mercearia', alt: 'Prateleiras da mercearia dentro da loja de Arcozelo' },
     ],
   },
   {
@@ -55,9 +55,9 @@ export const houses = [
     note: 'A casa de Miguel Pereira',
     accent: 'terracotta',
     images: [
-      { id: 'fachada-miguel', alt: 'Fachada da loja da Padaria Ágape em Miguel Pereira' },
-      { id: 'salao-miguel', alt: 'Interior da loja de Miguel Pereira com vitrine refrigerada e a frase na parede ao fundo' },
-      { id: 'balcao-miguel', alt: 'Balcão de atendimento da loja de Miguel Pereira' },
+      { id: 'fachada-miguel', caption: 'Fachada', alt: 'Fachada da loja da Padaria Ágape em Miguel Pereira' },
+      { id: 'salao-miguel', caption: 'Salão', alt: 'Interior da loja de Miguel Pereira com vitrine refrigerada e a frase na parede ao fundo' },
+      { id: 'balcao-miguel', caption: 'Balcão', alt: 'Balcão de atendimento da loja de Miguel Pereira' },
     ],
   },
 ];
