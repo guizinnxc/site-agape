@@ -10,6 +10,16 @@
     "focal": "50% 50%",
     "credit": "maps"
   },
+  "vitrine-arco": {
+    "width": 672,
+    "height": 652,
+    "widths": [
+      480,
+      672
+    ],
+    "focal": "50% 50%",
+    "credit": "maps"
+  },
   "paes-estante": {
     "width": 1200,
     "height": 1600,

@@ -10,7 +10,7 @@ const TITLE = 'Padaria e Confeitaria Ágape · Arcozelo e Miguel Pereira';
 const DESCRIPTION =
   'Padaria e confeitaria artesanal desde 2012, com lojas em Arcozelo (Paty do Alferes) e no centro de ' +
   'Miguel Pereira, RJ. Pães, doces e bolos sob encomenda pelo WhatsApp.';
-// Vale para as duas fotos do hero: vitrine de Arcozelo (desktop) e de Miguel Pereira (celular).
+// Vale para as duas fotos do hero: vitrine de Arcozelo (tablet/desktop) e de Miguel Pereira (celular).
 const HERO_ALT = 'Vitrine iluminada cheia de doces da Padaria Ágape';
 const BRIDGE_ID = 'cafe-neon';
 
@@ -86,9 +86,9 @@ function renderNav() {
 function renderVitrine() {
   const inner =
     `<div class="hero__frame" data-hero-frame>` +
-    renderPicture('vitrine-arcozelo', {
+    renderPicture('vitrine-arco', {
       alt: HERO_ALT,
-      sizes: '100vw',
+      sizes: '(min-width: 1024px) 50vw, (min-width: 700px) 66vw, 80vw',
       priority: true,
       mobileId: 'vitrine-retrato',
       className: 'hero__picture',

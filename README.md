@@ -97,7 +97,7 @@ publicar o site, a padaria deve conseguir essa autorização ou substituir essas
 - Links: WhatsApp, "Como chegar" das duas lojas, nenhum link vazio; todas as imagens carregam.
 - Emulação de celular 390×844 e 320×640: sem rolagem lateral, barra de capítulos visível e com o nome
   inteiro, botão do WhatsApp do hero não fica coberto.
-- "Reduzir movimento" emulado: tudo visível sem rolar e o hero no estado final.
+- "Reduzir movimento" emulado: tudo visível sem rolar e a foto do hero parada.
 - Sem JS (arquivos `.js` bloqueados): capítulos, painéis das duas casas e fotos como links continuam
   acessíveis e legíveis.
 - Abrindo `dist/index.html` direto do disco (`file://`): CSS, fotos e JS funcionam.

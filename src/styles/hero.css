@@ -1,50 +1,55 @@
-/* Capítulo I — A vitrine acende.
-   A foto nasce numa moldura em arco (eco da porta de Miguel Pereira) e, conforme o
-   visitante rola, se abre até ocupar a tela. O JS define --hero-progress (0→1) enquanto
-   o hero sai da tela; como o hero tem 2 telas de altura e a moldura fica fixa (sticky)
-   durante a primeira, --p normaliza o progresso para terminar a expansão quando a
-   moldura se solta. Sem JS ou com movimento reduzido: estado final, foto inteira. */
+/* Capítulo I · A vitrine acende.
+   Composição assimétrica: no desktop o texto fica à esquerda, alinhado à esquerda, e a
+   foto da vitrine ocupa ~56% da largura à direita, recortada em arco (eco da porta de
+   Miguel Pereira), do topo até o pé da tela. No tablet e no celular, recompõe na
+   vertical: o arco à direita em cima, o selo como medalhão na soleira do arco e o texto
+   embaixo, sobre o fundo escuro (sem véu sobre a foto).
+   O JS ainda define --hero-progress (0 → 1 enquanto o hero sai da tela): a foto desce
+   um pouco mais devagar que a página (paralaxe leve, só transform). Sem JS ou com
+   movimento reduzido: foto parada. */
 
 .hero {
-  --hero-progress: 1;
-  --p: min(1, calc(var(--hero-progress) * 2));
+  --hero-progress: 0;
+  --selo-hero: clamp(4.5rem, 3.4rem + 4vw, 8.5rem);
   position: relative;
   display: grid;
-  grid-template: 1fr / 1fr;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'img'
+    'text';
+  align-content: start;
   min-height: 100vh;
   min-height: 100svh;
+  padding: calc(var(--space-s) * 2 + 3.5rem) var(--gutter) calc(var(--bar-h) + var(--space-m));
   isolation: isolate;
   overflow: clip;
   background: var(--ink);
 }
 
-/* Brilho quente da vitrine atrás do arco; apaga conforme a foto toma a tela. */
+/* Brilho quente da vitrine atrás do arco. */
 .hero::before {
   content: '';
-  grid-area: 1 / 1;
-  align-self: start;
-  position: sticky;
-  top: 0;
+  position: absolute;
+  inset: 0 0 auto 30%;
+  height: 80%;
   z-index: -1;
-  height: 100vh;
-  height: 100svh;
+  pointer-events: none;
   background:
-    radial-gradient(55% 45% at 50% 78%, rgb(226 201 143 / 0.22), transparent 70%),
-    radial-gradient(90% 70% at 50% 100%, rgb(201 139 74 / 0.12), transparent 75%);
-  opacity: calc(1 - var(--p));
+    radial-gradient(closest-side at 60% 50%, rgb(226 201 143 / 0.15), transparent),
+    radial-gradient(closest-side at 70% 80%, rgb(201 139 74 / 0.1), transparent);
 }
 
 .hero__frame {
-  grid-area: 1 / 1;
-  align-self: start;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
-  transform-origin: 50% 100%;
-  transform: scale(calc(0.82 + 0.18 * var(--p)));
-  /* Arco: raio superior = metade da largura; vai a 0 com o progresso. */
-  clip-path: inset(0 round calc((1 - var(--p)) * 50vw) calc((1 - var(--p)) * 50vw) 0 0);
+  grid-area: img;
+  justify-self: end;
+  position: relative;
+  width: min(80%, 26rem);
+  height: clamp(12rem, 35svh, 24rem);
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--brick);
+  outline: 1px solid var(--line);
+  outline-offset: 6px;
 }
 
 .hero__picture,
@@ -55,54 +60,27 @@
 
 .hero__picture img {
   object-fit: cover;
-}
-
-/* Véu escuro: garante contraste AA do título sobre a foto. */
-.hero__frame::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      to top,
-      rgb(15 13 11 / 0.96) 0%,
-      rgb(15 13 11 / 0.9) 24%,
-      rgb(15 13 11 / 0.72) 42%,
-      rgb(15 13 11 / 0.22) 64%,
-      rgb(15 13 11 / 0.12) 76%,
-      rgb(15 13 11 / 0.55) 100%
-    );
+  transform: translateY(calc(var(--hero-progress) * 6%)) scale(1.08);
 }
 
 .hero__content {
-  grid-area: 1 / 1;
-  align-self: start;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  height: 100vh;
-  height: 100svh;
+  grid-area: text;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-start;
   gap: var(--space-xs);
-  /* Topo: o selo fica no fecho do arco (o arco começa a 18% da altura). */
-  padding: calc(18vh + 1.25rem) var(--gutter) calc(var(--bar-h) + clamp(1.75rem, 7svh, 4.5rem));
-  padding-top: calc(18svh + 1.25rem);
-  text-align: center;
-  text-shadow: 0 1px 18px rgb(15 13 11 / 0.65);
+  text-align: left;
 }
 
+/* Selo: medalhão na soleira do arco (celular/tablet). */
 .hero__content .selo {
   flex-shrink: 0;
-  margin-bottom: auto;
-  filter: drop-shadow(0 2px 14px rgb(15 13 11 / 0.7));
-  /* Halo escuro: o selo continua legível quando a foto já ocupa a tela toda
-     (movimento reduzido, sem JS ou ao fim da expansão). */
+  width: var(--selo-hero);
+  margin-top: calc(var(--selo-hero) * -0.5);
+  margin-left: calc(20% - var(--selo-hero) * 0.5);
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(15 13 11 / 0.62), rgb(15 13 11 / 0.4) 78%, transparent);
+  background: var(--ink);
+  box-shadow: 0 0 0 6px var(--ink);
 }
 
 .hero__kicker {
@@ -115,10 +93,11 @@
 }
 
 .hero__title {
-  max-width: 16ch;
+  max-width: 12ch;
   font-size: var(--step-5);
   line-height: 0.95;
   color: var(--cream);
+  text-wrap: balance;
 }
 
 .hero__tagline {
@@ -133,14 +112,10 @@
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: var(--space-xs);
   margin-top: var(--space-s);
-  text-shadow: none;
 }
 
-/* Celular: o kicker vira duas linhas fixas (lugares / "desde 2012"), sem partir o nome
-   da cidade; no desktop cabe numa linha só. */
 @media (max-width: 699px) {
   .hero__kicker {
     letter-spacing: 0.16em;
@@ -163,42 +138,20 @@
   }
 }
 
-/* Celular: o bloco de texto ocupa mais da foto, então o véu sobe junto. */
-@media (max-width: 699px) {
-  .hero__frame::after {
-    background: linear-gradient(
-      to top,
-      rgb(15 13 11 / 0.96) 0%,
-      rgb(15 13 11 / 0.9) 34%,
-      rgb(15 13 11 / 0.74) 56%,
-      rgb(15 13 11 / 0.3) 76%,
-      rgb(15 13 11 / 0.55) 100%
-    );
+/* Telas baixas (celular deitado, 320×640): arco e selo menores para o convite caber. */
+@media (max-height: 700px) and (max-width: 1023px) {
+  .hero {
+    --selo-hero: 4.25rem;
+    padding-top: calc(var(--space-s) * 2 + 3.25rem);
+    padding-bottom: calc(var(--bar-h) + var(--space-s));
   }
-}
 
-/* Telas baixas (celular deitado, 320×640): compacta o bloco para caber no arco. */
-@media (max-height: 700px) {
-  .hero__frame::after {
-    background: linear-gradient(
-      to top,
-      rgb(15 13 11 / 0.96) 0%,
-      rgb(15 13 11 / 0.9) 40%,
-      rgb(15 13 11 / 0.76) 66%,
-      rgb(15 13 11 / 0.4) 84%,
-      rgb(15 13 11 / 0.6) 100%
-    );
+  .hero__frame {
+    height: clamp(8rem, 26svh, 16rem);
   }
 
   .hero__content {
     gap: var(--space-2xs);
-    padding-top: calc(18vh + 0.5rem);
-    padding-top: calc(18svh + 0.5rem);
-    padding-bottom: calc(var(--bar-h) + 1.25rem);
-  }
-
-  .hero__content .selo {
-    width: 4rem;
   }
 
   .hero__actions {
@@ -207,26 +160,68 @@
   }
 }
 
-/* Com JS e movimento livre: duas telas de rolagem para a moldura se abrir. */
-@media (prefers-reduced-motion: no-preference) {
-  html.js .hero {
-    --hero-progress: 0;
-    height: 200vh;
-    height: 200svh;
+/* Tablet: o arco cresce, o texto ganha mais respiro. */
+@media (min-width: 700px) and (max-width: 1023px) {
+  .hero__frame {
+    width: min(66%, 34rem);
+    height: clamp(16rem, 42svh, 30rem);
+  }
+
+  .hero__content .selo {
+    margin-left: calc(34% - var(--selo-hero) * 0.5);
+  }
+}
+
+/* Desktop: duas colunas, texto à esquerda e arco à direita até a faixa de capítulos. */
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: minmax(0, 44fr) minmax(0, 56fr);
+    grid-template-areas: 'text img';
+    align-content: stretch;
+    column-gap: var(--space-xl);
+    padding: 0 var(--rail) 0 max(var(--gutter), (100vw - var(--content) - var(--rail)) / 2);
+  }
+
+  .hero::before {
+    inset: 0 0 0 40%;
+    height: auto;
   }
 
   .hero__frame {
-    will-change: transform, clip-path;
+    justify-self: stretch;
+    align-self: stretch;
+    width: auto;
+    height: auto;
+    min-height: 32rem;
+    margin-top: calc(var(--space-s) * 2 + 3.5rem);
+    outline-offset: 8px;
+  }
+
+  .hero__content {
+    align-self: center;
+    gap: var(--space-s);
+    padding-block: calc(var(--space-s) * 2 + 3.5rem) var(--space-xl);
+  }
+
+  .hero__content .selo {
+    margin: 0 0 var(--space-s);
+    box-shadow: none;
+    background: none;
+  }
+
+  .hero__title {
+    max-width: 11ch;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__picture img {
+    will-change: transform;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero::before {
-    opacity: 0;
-  }
-
-  .hero__frame {
+  .hero__picture img {
     transform: none;
-    clip-path: none;
   }
 }

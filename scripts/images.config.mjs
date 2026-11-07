@@ -10,6 +10,9 @@ const item = (id, src, extra = {}) => ({
 
 export const IMAGES = [
   item('vitrine-arcozelo', 'maps-arcozelo/maps-arc-01.jpg', { widths: [640, 1200, 1600] }),
+  // Hero no tablet/desktop: recorte em pé da vitrine de Arcozelo (tortinhas, sonhos e docinhos),
+  // acima da fileira de baixo, onde ficam as etiquetas com preço.
+  item('vitrine-arco', 'maps-arcozelo/maps-arc-01.jpg', { crop: { left: 0.18, top: 0.05, width: 0.42, height: 0.725 }, widths: [480, 672] }),
   item('paes-estante', 'maps-arcozelo/maps-arc-07.jpg'),
   item('pao-frances', 'maps-arcozelo/maps-arc-06.jpg', { widths: [480, 600] }),
   item('sonhos', 'maps-arcozelo/maps-arc-03.jpg'),
