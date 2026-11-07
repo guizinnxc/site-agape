@@ -73,7 +73,7 @@ export const products = [
   { id: 'paes-estante', name: 'Pães da casa', chapter: 'fornada', image: 'paes-estante',
     alt: 'Estante da padaria cheia de pães variados', caption: 'Pães da casa' },
   { id: 'padeiros', name: 'Nossos padeiros', chapter: 'fornada', image: 'padeiros',
-    alt: 'Equipe de padeiros trabalhando na produção da padaria', caption: 'Nossos padeiros' },
+    alt: 'Quatro padeiros sorrindo lado a lado, de camiseta branca com o logo da Padaria Ágape, três deles de boné preto, dentro da loja com parede de tijolinho preto ao fundo', caption: 'Nossos padeiros' },
   // Capítulo III — Confeitaria
   { id: 'torta-pudim', name: 'Torta Pudim', chapter: 'confeitaria', image: 'torta-pudim', tag: 'Novidade',
     alt: 'Torta em camadas com cobertura branca escorrida e topo alaranjado, vista em corte', caption: 'Torta Pudim, a novidade da casa' },
