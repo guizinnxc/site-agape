@@ -47,7 +47,7 @@ Decisões do usuário (06/11/2026):
 **Produtos com nome confirmado**: Torta Pudim (novidade, IG 20/06/2026), bolos sob encomenda ("Transformamos sonhos em bolo… Aceitamos encomendas"), pão francês, sonho, rocambole, torta surpresa de morango com chocolate, trança recheada de coco, bolo cocada da casa, bolo de aipim, lasanha no pão, pão de queijo, chocolate quente, café.
 
 **Pendências de conteúdo** (não aparecem como fato; ficam marcadas em `src/content.js` com `pendente`):
-- Horário completo por dia → o site mostra "Abre às 6h · confirme o horário do dia pelo WhatsApp". *(Chamada do builder: é o máximo que os dados sustentam.)*
+- Horário completo por dia → o site mostra "Confirme o horário do dia pelo WhatsApp antes de vir". *(Revisão final, 2026-11-06: o Maps só confirma sexta 06:00–21:00, então "Abre às 6h" generalizava; trocado pelo aviso sem horário.)*
 - Preços → não exibidos (etiquetas nas fotos de clientes são antigas).
 - Qual loja atende o WhatsApp / área de delivery → texto genérico "Encomendas e delivery".
 - Autorização formal de uso das fotos de clientes do Maps → créditos no rodapé + nota no README.
@@ -112,7 +112,7 @@ Navegação fixa por capítulos com progresso (interação principal): faixa lat
 | III | **Confeitaria** | Torta Pudim (novidade), rocambole, torta surpresa, bolo cocada, bolos de chocolate; bloco "Bolos sob encomenda" com CTA WhatsApp. | Tira horizontal com botões anterior/próximo visíveis, rolagem por toque e setas do teclado; scroll-snap. |
 | IV | **De perto** (detalhe) | Seção curta real: mosaico de 3 texturas em recortes de arco (vitrine de doces, pães na ilha, café da manhã) + frase convidando a tocar nas fotos. Todas as fotos do site abrem a galeria ampliada em `<dialog>`: foto grande, nome curto, crédito da origem. | Abre de qualquer foto; Esc/botão fecha; ←/→ navega; foco volta à miniatura de origem; posição de scroll preservada. |
 | V | **Duas casas** | Arcozelo (preto/dourado, reinaugurada 02/10/2026) e Miguel Pereira (creme/terracota, "Ágape Gourmet"). Sequência de ambientes de cada uma + ponte com o letreiro "A vida começa depois do café". | Abas acessíveis (role=tablist) alternando a casa; no celular, empilha. |
-| VI | **Visite / Encomende** | Para cada casa: endereço, "Abre às 6h · confirme pelo WhatsApp", botões *Como chegar* (Google Maps directions com lat/lng) e *WhatsApp*. Rodapé: Instagram, créditos de fotos, "Desde 2012". | Encerramento visual: a vitrine "apaga" para o selo dourado. |
+| VI | **Visite / Encomende** | Para cada casa: endereço, "Confirme o horário do dia pelo WhatsApp antes de vir" (revisão final: sem "Abre às 6h"), botões *Como chegar* (Google Maps directions com lat/lng) e *WhatsApp*. Rodapé: Instagram, créditos de fotos, "Desde 2012". | Encerramento visual: a vitrine "apaga" para o selo dourado. |
 
 Sem JS: todas as seções aparecem em ordem, imagens visíveis, galeria vira links para as imagens grandes, abas viram duas seções empilhadas.
 

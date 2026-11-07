@@ -36,6 +36,10 @@ describe('conteúdo', () => {
     expect(s).not.toMatch(/R\$\s?\d/);
     expect(s).not.toMatch(/\b\d{1,2}h\s?(às|-|–)\s?\d{1,2}h\b/);
   });
+  it('aviso de horário não generaliza a abertura (só sexta confirmada no Maps)', () => {
+    expect(site.hoursNote).toBe('Confirme o horário do dia pelo WhatsApp antes de vir');
+    expect(JSON.stringify({ site, houses, products })).not.toMatch(/Abre às|\d{1,2}h/);
+  });
   it('capítulos e endereços', () => {
     expect(chapters.length).toBe(6);
     expect(houses[0].address).toBe('R. Dr. Mario Kroeff, 95 – Arcozelo, Paty do Alferes – RJ, 26950-000');

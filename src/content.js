@@ -1,5 +1,5 @@
 // Fonte única de texto e dados do site. Somente fatos confirmados (spec §3).
-// Nunca incluir preços, horários além de hoursNote, nem ingredientes não citados.
+// Nunca incluir preços, horários (só o aviso hoursNote), nem ingredientes não citados.
 
 export const site = {
   name: 'Padaria e Confeitaria Ágape',
@@ -8,7 +8,7 @@ export const site = {
   motto: 'A vida começa depois do café',
   instagram: 'https://www.instagram.com/padariaagape25/',
   whatsappDisplay: '(24) 98110-0190',
-  hoursNote: 'Abre às 6h · confirme o horário do dia pelo WhatsApp',
+  hoursNote: 'Confirme o horário do dia pelo WhatsApp antes de vir',
 };
 
 export const creditText = {
@@ -109,7 +109,7 @@ export const credits = [
 
 // Pendências de conteúdo (spec §3). Documentação; não renderizadas na página.
 export const pending = [
-  'Horário completo por dia: o site mostra apenas "Abre às 6h · confirme o horário do dia pelo WhatsApp".',
+  'Horário completo por dia (o Google Maps só confirma sexta, 06:00–21:00): o site mostra apenas "Confirme o horário do dia pelo WhatsApp antes de vir".',
   'Preços: não exibidos (etiquetas nas fotos de clientes são antigas).',
   'Qual loja atende o WhatsApp e área de delivery: texto genérico "Encomendas e delivery".',
   'Autorização formal de uso das fotos de clientes do Maps: créditos no rodapé e nota no README.',

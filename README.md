@@ -62,7 +62,9 @@ Não use fotos com crianças nem fotos de visitantes identificáveis sem autoriz
 
 Vêm de `pending` em `src/content.js` e dependem da padaria:
 
-- **Horário completo por dia**: o site mostra apenas "Abre às 6h · confirme o horário do dia pelo WhatsApp".
+- **Horário completo por dia**: o Google Maps só confirma a sexta-feira (06:00–21:00), então o site não
+  mostra horário — apenas "Confirme o horário do dia pelo WhatsApp antes de vir". Falta a padaria informar
+  o horário de cada dia da semana, por loja.
 - **Preços**: não exibidos (as etiquetas nas fotos de clientes são antigas).
 - **WhatsApp e delivery**: falta confirmar qual loja atende o número e qual é a área de entrega; o site
   usa o texto genérico "Encomendas e delivery".
