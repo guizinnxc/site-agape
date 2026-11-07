@@ -1,9 +1,10 @@
 // Origem relativa a assets/originais/. Frações de crop (0–1) incidem sobre a imagem já girada pelo EXIF.
 const D = [480, 960, 1600];
-const item = (id, src, extra = {}) => ({
+export const item = (id, src, extra = {}) => ({
   id,
   src,
-  credit: src.startsWith('instagram/') ? 'instagram' : 'maps',
+  // instagram/ e instagram-perfil/ são fotos do perfil da padaria; o resto, de clientes no Maps.
+  credit: /^instagram(-perfil)?\//.test(src) ? 'instagram' : 'maps',
   widths: D,
   ...extra,
 });

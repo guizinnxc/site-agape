@@ -14,8 +14,15 @@ describe('imagens responsivas', () => {
 
   it('crédito casa com a origem', () => {
     for (const i of IMAGES) {
-      expect(i.credit).toBe(i.src.startsWith('instagram/') ? 'instagram' : 'maps');
+      expect(i.credit).toBe(/^instagram(-perfil)?\//.test(i.src) ? 'instagram' : 'maps');
     }
+  });
+
+  it('instagram-perfil/ também é crédito do Instagram', async () => {
+    const { item } = await import('../scripts/images.config.mjs');
+    expect(item('x', 'instagram-perfil/ig-a-1.jpg').credit).toBe('instagram');
+    expect(item('x', 'instagram/post-a-1.jpg').credit).toBe('instagram');
+    expect(item('x', 'maps-miguel/maps-mig-01.jpg').credit).toBe('maps');
   });
 
   for (const img of IMAGES) {
