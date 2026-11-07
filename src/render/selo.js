@@ -12,15 +12,17 @@ const EAR =
   'M80 168c-1-6 2-11 6-12 1 6-1 10-6 12zM88 174c0-6 3-10 8-11 0 6-3 10-8 11z"/>';
 
 /**
- * @param {{className?: string, title?: string, id?: string}} [opts]
+ * @param {{className?: string, title?: string, id?: string, decorative?: boolean}} [opts]
+ * decorative: repetição visual do selo (hero, rodapé) — aria-hidden, sem role nem title.
  */
-export function renderSelo({ className = '', title = 'Padaria e Confeitaria Ágape, desde 2012', id } = {}) {
+export function renderSelo({ className = '', title = 'Padaria e Confeitaria Ágape, desde 2012', id, decorative = false } = {}) {
   const uid = id || `selo-${++counter}`;
   const cls = ['selo', className].filter(Boolean).join(' ');
   return (
-    `<svg class="${esc(cls)}" viewBox="0 0 200 200" role="img" aria-labelledby="${uid}-t"` +
+    `<svg class="${esc(cls)}" viewBox="0 0 200 200"` +
+    (decorative ? ` aria-hidden="true" focusable="false"` : ` role="img" aria-labelledby="${uid}-t"`) +
     ` xmlns="http://www.w3.org/2000/svg" fill="currentColor">` +
-    `<title id="${uid}-t">${esc(title)}</title>` +
+    (decorative ? '' : `<title id="${uid}-t">${esc(title)}</title>`) +
     `<defs><path id="${uid}-arc" d="M27 100a73 73 0 0 1 146 0"/></defs>` +
     `<circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="2.5"/>` +
     `<circle cx="100" cy="100" r="88" fill="none" stroke="currentColor" stroke-width="1"/>` +

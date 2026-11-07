@@ -40,6 +40,24 @@ describe('conteúdo', () => {
     expect(site.hoursNote).toBe('Confirme o horário do dia pelo WhatsApp antes de vir');
     expect(JSON.stringify({ site, houses, products })).not.toMatch(/Abre às|\b\d{1,2}h\b/);
   });
+  it('Torta Pudim sem a etiqueta "Novidade" (post de junho/2026 pode estar velho)', () => {
+    const s = JSON.stringify(products);
+    expect(s.toLowerCase()).not.toContain('novidade');
+    expect(pending.some((t) => /Torta Pudim/.test(t) && /novidade/i.test(t))).toBe(true);
+  });
+  it('fotos das casas com legenda curta própria', () => {
+    for (const h of houses)
+      for (const im of h.images) {
+        expect(typeof im.caption, im.id).toBe('string');
+        expect(im.caption.length, im.id).toBeGreaterThan(2);
+        expect(im.caption.length, im.id).toBeLessThanOrEqual(40);
+      }
+  });
+  it('alt dos padeiros descreve a foto (quatro homens posando)', () => {
+    const alt = products.find((p) => p.id === 'padeiros').alt;
+    expect(alt).toMatch(/[Qq]uatro/);
+    expect(alt).not.toMatch(/trabalhando/);
+  });
   it('capítulos e endereços', () => {
     expect(chapters.length).toBe(6);
     expect(houses[0].address).toBe('R. Dr. Mario Kroeff, 95 – Arcozelo, Paty do Alferes – RJ, 26950-000');
@@ -49,7 +67,7 @@ describe('conteúdo', () => {
     expect(products.length).toBe(16);
     expect(alsoMade.length).toBe(5);
     expect(credits.length).toBe(2);
-    expect(pending.length).toBe(4);
+    expect(pending.length).toBe(5);
     expect(creditText.instagram).toBe('Foto: Instagram @padariaagape25');
     expect(creditText.maps).toBe('Foto: cliente no Google Maps');
   });

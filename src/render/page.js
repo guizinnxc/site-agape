@@ -94,7 +94,7 @@ function renderVitrine() {
     }) +
     `</div>` +
     `<div class="hero__content">` +
-    renderSelo({ className: 'selo--hero', id: 'selo-hero' }) +
+    renderSelo({ className: 'selo--hero', id: 'selo-hero', decorative: true }) +
     // Duas partes: no celular "desde 2012" desce para a 2ª linha sem o ponto, e o nome
     // "Miguel Pereira" nunca se parte (espaço inseparável).
     `<p class="hero__kicker"><span class="hero__places">Arcozelo · Miguel&nbsp;Pereira</span>` +
@@ -302,7 +302,7 @@ function renderFooter() {
   const list = credits.map((c) => `<li>${esc(c)}</li>`).join('');
   return (
     `<footer class="site-footer">` +
-    renderSelo({ className: 'selo--footer', id: 'selo-rodape' }) +
+    renderSelo({ className: 'selo--footer', id: 'selo-rodape', decorative: true }) +
     `<p class="site-footer__since">${esc(site.name)} · Desde ${site.since}</p>` +
     `<p class="site-footer__motto">${esc(site.motto)}</p>` +
     `<p class="site-footer__social"><a ${ext(site.instagram)}>Instagram @padariaagape25</a></p>` +
