@@ -744,36 +744,48 @@ html.js .strip__controls {
   margin-top: var(--space-l);
 }
 
+/* Tablet e desktop: a fachada em arco conduz a galeria (alta, à esquerda) e as
+   outras duas fotos empilham ao lado, com a mesma altura somada. */
 @media (min-width: 700px) {
   .house--miguel-pereira .house__gallery {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: var(--space-m);
+    align-items: stretch;
   }
 
   .house--miguel-pereira .house__shot--1 {
-    grid-column: auto;
+    grid-column: 1;
+    grid-row: 1 / span 2;
   }
 
   .house--miguel-pereira .house__shot--1 .shot {
-    --ratio: 1 / 2;
+    --ratio: 3 / 5;
   }
 
-  .house--miguel-pereira .house__shot--2 {
-    margin-top: var(--space-xl);
+  .house--miguel-pereira .house__shot--2,
+  .house--miguel-pereira .house__shot--3 {
+    grid-column: 2;
+    margin-top: 0;
   }
 
   .house--miguel-pereira .house__shot--3 {
-    margin-top: calc(var(--space-xl) * 2);
+    align-self: end;
+  }
+
+  .house--miguel-pereira .house__shot--2 .shot,
+  .house--miguel-pereira .house__shot--3 .shot {
+    --ratio: 4 / 5;
   }
 }
 
-@media (min-width: 1024px) {
-  /* Intro à direita, galeria em escada à esquerda (o inverso de Arcozelo). */
+@media (min-width: 1200px) {
+  /* Intro à direita, galeria (fachada + duas fotos) à esquerda: o inverso de Arcozelo.
+     Abaixo de 1200 px a intro fica em cima e a galeria usa a largura toda. */
   .house--miguel-pereira {
     grid-template-columns:
       [full-start] minmax(var(--gutter), 1fr)
-      [content-start gallery-start] minmax(0, calc(var(--content) * 0.62))
-      [gallery-end intro-start] minmax(0, calc(var(--content) * 0.38))
+      [content-start gallery-start] minmax(0, calc(var(--content) * 0.68))
+      [gallery-end intro-start] minmax(0, calc(var(--content) * 0.32))
       [intro-end content-end] minmax(calc(var(--gutter) + var(--rail)), 1fr)
       [full-end];
     column-gap: 0;
