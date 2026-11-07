@@ -215,7 +215,9 @@ describe('renderPage — componentes', () => {
     const src = document.querySelector('.hero__picture source[media]');
     expect(src.getAttribute('media')).toBe('(max-width: 699px)');
     expect(src.getAttribute('srcset')).toContain('img/vitrine-retrato-');
-    expect(manifest['vitrine-retrato'].width).toBeGreaterThanOrEqual(600);
+    // Recorte estreito e alto, sem etiquetas de preço: cobre uma tela de 390×844 sem ampliar (1x).
+    expect(manifest['vitrine-retrato'].width).toBeGreaterThanOrEqual(390);
+    expect(manifest['vitrine-retrato'].height).toBeGreaterThanOrEqual(844);
     expect(manifest['vitrine-retrato'].height).toBeGreaterThan(manifest['vitrine-retrato'].width);
     expect(document.querySelector('[data-lightbox="vitrine-retrato"]')).toBeNull();
     expect(document.querySelector('.hero__picture img').getAttribute('alt')).toMatch(/doces/);

@@ -31,7 +31,7 @@ export const IMAGES = [
   item('bolo-festa', 'instagram/post-De5L3iXRbiT-1.jpg'),
   // Hero no celular: retrato da vitrine de Miguel Pereira (tortinhas, pães de coco e donuts).
   // Etiquetas antigas só no terço de baixo, sob o véu escuro do hero.
-  item('vitrine-retrato', 'maps-miguel/maps-mig-03.jpg', { crop: { left: 0.0625, top: 0.1, width: 0.375, height: 0.9 } }),
+  item('vitrine-retrato', 'maps-miguel/maps-mig-03.jpg', { crop: { left: 0.0625, top: 0.1, width: 0.245, height: 0.9 } }),
   // Capítulo IV — De perto: recortes fechados de textura, sem etiquetas de preço.
   item('sonho-acucar', 'maps-arcozelo/maps-arc-03.jpg', { crop: { left: 0.344, top: 0, width: 0.469, height: 1 } }),
   item('bolo-farofa', 'maps-miguel/maps-mig-02.jpg', { crop: { left: 0.3, top: 0.18, width: 0.4, height: 0.82 } }),

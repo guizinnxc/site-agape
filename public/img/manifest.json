@@ -205,11 +205,10 @@
     "credit": "instagram"
   },
   "vitrine-retrato": {
-    "width": 600,
+    "width": 392,
     "height": 1080,
     "widths": [
-      480,
-      600
+      392
     ],
     "focal": "50% 50%",
     "credit": "maps"
