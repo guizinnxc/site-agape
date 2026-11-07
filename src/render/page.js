@@ -185,7 +185,11 @@ function renderPerto() {
     .map(
       (p, i) =>
         `<li class="mosaic__item mosaic__item--${i + 1}" data-reveal>` +
-        renderShot(p.image, { alt: p.alt, caption: p.caption, sizes: '(min-width: 700px) 33vw, 100vw' }) +
+        renderShot(p.image, {
+          alt: p.alt,
+          caption: p.caption,
+          sizes: i === 0 ? '(min-width: 700px) 52vw, 100vw' : '(min-width: 700px) 36vw, 50vw',
+        }) +
         `<span class="mosaic__label">${esc(p.caption)}</span>` +
         `</li>`
     )
