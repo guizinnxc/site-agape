@@ -91,6 +91,13 @@ h3 {
   text-wrap: balance;
 }
 
+/* h1 e h2 no peso 700: contraste claro com o texto corrido (Manrope 400). */
+h1,
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 p {
   text-wrap: pretty;
 }

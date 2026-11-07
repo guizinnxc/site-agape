@@ -94,7 +94,7 @@
 
 .hero__title {
   max-width: 12ch;
-  font-size: var(--step-5);
+  font-size: clamp(2.8rem, 1.6rem + 5.6vw, 7.25rem);
   line-height: 0.95;
   color: var(--cream);
   text-wrap: balance;
