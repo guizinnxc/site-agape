@@ -43,6 +43,10 @@ por cenário.
   Miguel Pereira) e se abre ao rolar; a fornada é uma colagem assimétrica; a confeitaria é uma
   prateleira horizontal; "De perto" usa recortes em arco; as casas têm cores próprias (preto/dourado
   em Arcozelo, pêssego/terracota em Miguel Pereira).
+- **Ritmo de fundos**: os capítulos alternam preto (com tijolinho), tijolo e creme; nas seções
+  creme o texto é marrom e a terracota fica nos filetes.
+- **Fotos entram suaves**: cada foto ampliável sobe e se revela uma vez ao chegar na tela
+  (sem JS ou com "reduzir movimento", aparece na hora).
 - **Movimento contido**: uma curva só, revelações de 600 ms, apenas `transform`/`opacity`/`clip-path`;
   com "reduzir movimento" ativado tudo aparece no estado final.
 

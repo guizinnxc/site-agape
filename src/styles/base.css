@@ -186,3 +186,7 @@ main:focus {
 .selo--footer {
   width: clamp(9rem, 6rem + 12vw, 14rem);
 }
+
+.nowrap {
+  white-space: nowrap;
+}

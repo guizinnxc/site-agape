@@ -263,7 +263,8 @@ function renderVisite() {
         `<article class="visit__card visit__card--${h.slug}" data-reveal>` +
         `<h3 class="visit__title">${esc(h.shortName)}</h3>` +
         `<p class="visit__name">${esc(h.name)}</p>` +
-        `<address class="visit__address">${esc(h.address)}</address>` +
+        // O CEP nunca se parte no hífen.
+        `<address class="visit__address">${esc(h.address).replace(/(\d{5}-\d{3})/, '<span class="nowrap">$1</span>')}</address>` +
         `<p class="visit__hours">${esc(site.hoursNote)}</p>` +
         `<div class="visit__actions">` +
         `<a class="btn btn--primary" ${ext(directionsUrl(h))}>Como chegar</a>` +

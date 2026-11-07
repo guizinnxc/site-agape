@@ -428,6 +428,7 @@ const s8 = () => {
       visible: els.filter((e) => e.classList.contains('is-visible')).length,
       opaque: els.filter((e) => getComputedStyle(e).opacity === '1').length,
       hp: getComputedStyle(document.querySelector('[data-hero]')).getPropertyValue('--hero-progress').trim(),
+      hiddenShots: [...document.querySelectorAll('a.shot > picture')].filter((p) => getComputedStyle(p).opacity !== '1').length,
     };
   })()`);
   check(st.reduced, 'prefers-reduced-motion não foi emulado');
@@ -435,6 +436,7 @@ const s8 = () => {
   check(st.visible === st.total, `${st.visible}/${st.total} [data-reveal] com .is-visible`);
   check(st.opaque === st.total, `${st.opaque}/${st.total} [data-reveal] com opacidade 1`);
   check(Number(st.hp) === 1, `--hero-progress = ${st.hp}`);
+  check(st.hiddenShots === 0, `${st.hiddenShots} fotos ainda escondidas com movimento reduzido`);
   shot('reduzido-1440-hero.png');
   return `${st.visible}/${st.total} [data-reveal] visíveis sem rolar, --hero-progress = ${st.hp}`;
 };
@@ -493,6 +495,7 @@ const s9body = () => {
       shots: shots.length,
       badShots: shots.filter((a) => !/^img\\/[\\w-]+\\.(jpe?g|webp|avif)$/.test(a.getAttribute('href'))).map((a) => a.getAttribute('href')),
       hiddenReveal: reveal.filter((e) => getComputedStyle(e).opacity !== '1').length,
+      hiddenShots: shots.filter((a) => getComputedStyle(a.querySelector('picture')).opacity !== '1').length,
       controls: getComputedStyle(document.querySelector('.strip__controls')).display,
     };
   })()`);
@@ -501,6 +504,7 @@ const s9body = () => {
   check(st.panels.every(Boolean), `painéis das casas: ${JSON.stringify(st.panels)}`);
   check(st.shots > 0 && st.badShots.length === 0, `a.shot com href inválido: ${st.badShots.join(', ')}`);
   check(st.hiddenReveal === 0, `${st.hiddenReveal} blocos [data-reveal] invisíveis sem JS`);
+  check(st.hiddenShots === 0, `${st.hiddenShots} fotos invisíveis sem JS`);
   check(st.controls === 'none', 'botões do carrossel aparecem sem JS (não funcionariam)');
   shot('sem-js-1440-topo.png');
   scrollToChapter(5);
