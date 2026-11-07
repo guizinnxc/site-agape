@@ -624,11 +624,29 @@ html.js [data-reveal] {
     transform var(--dur-reveal) var(--ease);
 }
 
+/* Fotos: a imagem sobe de leve e se revela de baixo para cima, uma vez (o JS marca
+   a.shot.is-visible). Sem JS (html sem .js) ou com movimento reduzido: já visível. */
+html.js .shot > picture {
+  transition:
+    opacity 900ms var(--ease),
+    transform 900ms var(--ease),
+    clip-path 900ms var(--ease);
+}
+
+html.js .shot:not(.is-visible) > picture {
+  opacity: 0;
+  transform: translateY(28px);
+  clip-path: inset(18% 0 0 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.js [data-reveal],
-  html.js [data-reveal]:not(.is-visible) {
+  html.js [data-reveal]:not(.is-visible),
+  html.js .shot > picture,
+  html.js .shot:not(.is-visible) > picture {
     opacity: 1;
     transform: none;
+    clip-path: none;
     transition: none;
   }
 
