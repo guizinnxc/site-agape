@@ -63,15 +63,15 @@ export const houses = [
 ];
 
 export const products = [
-  // Capítulo II — A fornada
-  { id: 'pao-frances', name: 'Pão francês', chapter: 'fornada', image: 'pao-frances',
-    alt: 'Pães franceses dourados reunidos em uma cesta', caption: 'Pão francês' },
+  // Capítulo II — A fornada (ordem = ordem visual da colagem: destaque primeiro)
+  { id: 'paes-estante', name: 'Pães da casa', chapter: 'fornada', image: 'paes-estante',
+    alt: 'Estante da padaria cheia de pães variados', caption: 'Pães da casa' },
   { id: 'sonhos', name: 'Sonho', chapter: 'fornada', image: 'sonhos',
     alt: 'Seis sonhos polvilhados com açúcar em um prato', caption: 'Sonho' },
   { id: 'tranca-coco', name: 'Trança recheada de coco', chapter: 'fornada', image: 'tranca-coco',
     alt: 'Trança de massa dourada embalada em bandeja, com etiqueta da Padaria Ágape Miguel Pereira', caption: 'Trança recheada de coco' },
-  { id: 'paes-estante', name: 'Pães da casa', chapter: 'fornada', image: 'paes-estante',
-    alt: 'Estante da padaria cheia de pães variados', caption: 'Pães da casa' },
+  { id: 'pao-frances', name: 'Pão francês', chapter: 'fornada', image: 'pao-frances',
+    alt: 'Pães franceses dourados reunidos em uma cesta', caption: 'Pão francês' },
   { id: 'padeiros', name: 'Nossos padeiros', chapter: 'fornada', image: 'padeiros',
     alt: 'Quatro padeiros sorrindo lado a lado, de camiseta branca com o logo da Padaria Ágape, três deles de boné preto, dentro da loja com parede de tijolinho preto ao fundo', caption: 'Nossos padeiros' },
   // Capítulo III — Confeitaria
