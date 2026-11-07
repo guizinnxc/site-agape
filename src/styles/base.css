@@ -139,33 +139,9 @@ button {
   outline-offset: 3px;
 }
 
-main:focus {
-  outline: none;
-}
-
 /* O atributo hidden sempre vence os display: grid/flex dos componentes. */
 [hidden] {
   display: none !important;
-}
-
-.skip-link {
-  position: fixed;
-  top: var(--space-s);
-  left: var(--space-s);
-  z-index: 100;
-  padding: var(--space-xs) var(--space-s);
-  background: var(--gold);
-  color: var(--ink);
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: var(--radius-s);
-  transform: translateY(calc(-100% - 2rem));
-}
-
-.skip-link:focus,
-.skip-link:focus-visible {
-  transform: none;
-  color: var(--ink);
 }
 
 /* Selo SVG: herda a cor dourada. */

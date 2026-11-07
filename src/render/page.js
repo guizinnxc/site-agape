@@ -325,10 +325,9 @@ function renderFooter() {
 /** Conteúdo de <body> (o script do cliente fica no index.html). */
 export function renderPage() {
   return (
-    `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>` +
     renderHeader() +
     renderNav() +
-    `<main id="conteudo" tabindex="-1">` +
+    `<main id="conteudo">` +
     renderVitrine() +
     renderFornada() +
     renderConfeitaria() +

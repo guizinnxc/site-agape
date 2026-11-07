@@ -46,8 +46,10 @@ describe('renderPage — estrutura', () => {
     expect(all('h1').length).toBe(1);
   });
 
-  it('skip link, main#conteudo e hero conforme o contrato', () => {
-    expect(document.querySelector('a.skip-link[href="#conteudo"]')).not.toBeNull();
+  it('sem link "Pular para o conteúdo" (pedido do usuário); main e hero conforme o contrato', () => {
+    expect(document.querySelector('.skip-link')).toBeNull();
+    expect(document.body.textContent).not.toContain('Pular para o conteúdo');
+    expect(document.querySelectorAll('main').length).toBe(1);
     expect(document.querySelector('main#conteudo')).not.toBeNull();
     const hero = document.querySelector('section.hero[data-hero]');
     expect(hero?.id).toBe('cap-1');
