@@ -383,6 +383,13 @@ function mobileChecks(w, h) {
   check(st.btnOk, `botão WhatsApp do hero coberto por ${st.hit} (botão até y=${st.btnBottom}, barra em y=${st.navTop})`);
   check(st.nameFits, `nome do capítulo atual cortado na barra ("${st.name}")`);
   shot(`celular-${w}-hero.png`);
+  // Abaixo de 700 px as casas empilham: sem abas, os dois painéis visíveis.
+  const houses = js(`(() => {
+    const vis = (id) => { const p = document.getElementById(id); return !p.hidden && p.getClientRects().length > 0 && p.offsetHeight > 0; };
+    const list = document.querySelector('[role="tablist"]');
+    return { listHidden: list.hidden && list.getClientRects().length === 0, ar: vis('panel-arcozelo'), mp: vis('panel-miguel-pereira') };
+  })()`);
+  check(houses.listHidden && houses.ar && houses.mp, `${w}px: casas não empilhadas ${JSON.stringify(houses)}`);
   const chaptersToShoot = w === 390 ? [2, 3, 4, 5, 6] : [3, 5, 6];
   for (const n of chaptersToShoot) {
     scrollToChapter(n);
@@ -398,7 +405,7 @@ function mobileChecks(w, h) {
   shots.push(`celular-${w}-pagina-inteira.png`);
   const problems = pageProblems();
   check(problems.length === 0, problems.join(' | '));
-  return `${w}×${h}: scrollWidth ${st.sw} ≤ ${st.iw}, barra visível, botão WhatsApp livre (fundo y=${st.btnBottom} < barra y=${st.navTop}), nome "${st.name}" inteiro`;
+  return `${w}×${h}: casas empilhadas (sem abas, 2 painéis), scrollWidth ${st.sw} ≤ ${st.iw}, barra visível, botão WhatsApp livre (fundo y=${st.btnBottom} < barra y=${st.navTop}), nome "${st.name}" inteiro`;
 }
 
 const s7 = () => [mobileChecks(390, 844), mobileChecks(320, 640)].join('; ');
