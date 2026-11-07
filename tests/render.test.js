@@ -185,9 +185,8 @@ describe('renderPage — componentes', () => {
       }
   });
 
-  it('sem rótulos em caixa alta acima dos títulos (eyebrow e kicker)', () => {
+  it('sem rótulos em caixa alta acima dos títulos dos capítulos (eyebrow)', () => {
     expect(document.querySelector('.chapter__eyebrow')).toBeNull();
-    expect(document.querySelector('.hero__kicker')).toBeNull();
     // O título vem primeiro no cabeçalho de cada capítulo.
     for (const head of all('.chapter__head')) expect(head.firstElementChild.tagName).toBe('H2');
   });
@@ -208,11 +207,14 @@ describe('renderPage — componentes', () => {
     );
   });
 
-  it('hero: cidades e "desde 2012" em texto corrido', () => {
-    const lead = document.querySelector('.hero__lead');
-    expect(lead.textContent).toContain('Arcozelo');
-    expect(lead.textContent).toContain('Miguel Pereira');
-    expect(lead.textContent).toContain(`desde ${site.since}`);
+  it('hero (escolha do usuário): kicker com as cidades e "desde 2012" acima do título, foto de ponta a ponta', () => {
+    const kicker = document.querySelector('.hero__kicker');
+    const text = kicker.textContent.replace(/\u00a0/g, ' ');
+    expect(text).toContain('Arcozelo');
+    expect(text).toContain('Miguel Pereira');
+    expect(text).toContain(`desde ${site.since}`);
+    expect(kicker.nextElementSibling.id).toBe('cap-1-title');
+    expect(document.querySelector('.hero__frame img').getAttribute('sizes')).toBe('100vw');
   });
 
   it('selo anunciado uma vez só: hero e rodapé ficam aria-hidden', () => {

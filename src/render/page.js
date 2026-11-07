@@ -85,9 +85,9 @@ function renderNav() {
 function renderVitrine() {
   const inner =
     `<div class="hero__frame" data-hero-frame>` +
-    renderPicture('vitrine-arco', {
+    renderPicture('vitrine-arcozelo', {
       alt: HERO_ALT,
-      sizes: '(min-width: 1024px) 50vw, (min-width: 700px) 66vw, 80vw',
+      sizes: '100vw',
       priority: true,
       mobileId: 'vitrine-retrato',
       className: 'hero__picture',
@@ -95,10 +95,12 @@ function renderVitrine() {
     `</div>` +
     `<div class="hero__content">` +
     renderSelo({ className: 'selo--hero', id: 'selo-hero', decorative: true }) +
+    // Duas partes: no celular "desde 2012" desce para a 2ª linha sem o ponto, e o nome
+    // "Miguel Pereira" nunca se parte (espaço inseparável).
+    `<p class="hero__kicker"><span class="hero__places">Arcozelo · Miguel&nbsp;Pereira</span>` +
+    `<span class="hero__sep"> · </span><span class="hero__since">desde&nbsp;${site.since}</span></p>` +
     `<h1 id="cap-1-title" class="hero__title">${esc(site.name)}</h1>` +
     `<p class="hero__tagline">${esc(site.tagline)}</p>` +
-    // As duas cidades e o ano em texto corrido; "Miguel Pereira" nunca se parte.
-    `<p class="hero__lead">Em Arcozelo e no centro de Miguel&nbsp;Pereira, desde ${site.since}.</p>` +
     `<div class="hero__actions">` +
     `<a class="btn btn--ghost" href="#cap-2">Explorar</a>` +
     `<a class="btn btn--primary" ${ext(whatsappUrl('Olá, Ágape! Quero fazer uma encomenda.'))}>Encomendar pelo WhatsApp</a>` +
