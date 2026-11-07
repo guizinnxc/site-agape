@@ -624,26 +624,37 @@ html.js [data-reveal] {
     transform var(--dur-reveal) var(--ease);
 }
 
-/* Fotos: a imagem sobe de leve e se revela de baixo para cima, uma vez (o JS marca
+/* Fotos: ao entrar na tela, a moldura sobe de leve e se abre de baixo para cima enquanto
+   a foto, um pouco ampliada, assenta no lugar. Acontece uma vez (o JS marca
    a.shot.is-visible). Sem JS (html sem .js) ou com movimento reduzido: já visível. */
 html.js .shot > picture {
   transition:
     opacity 900ms var(--ease),
     transform 900ms var(--ease),
-    clip-path 900ms var(--ease);
+    clip-path 1000ms var(--ease);
+}
+
+html.js .shot > picture img {
+  transition: transform 1500ms var(--ease);
 }
 
 html.js .shot:not(.is-visible) > picture {
   opacity: 0;
   transform: translateY(28px);
-  clip-path: inset(18% 0 0 0);
+  clip-path: inset(22% 0 0 0);
+}
+
+html.js .shot:not(.is-visible) > picture img {
+  transform: scale(1.12);
 }
 
 @media (prefers-reduced-motion: reduce) {
   html.js [data-reveal],
   html.js [data-reveal]:not(.is-visible),
   html.js .shot > picture,
-  html.js .shot:not(.is-visible) > picture {
+  html.js .shot:not(.is-visible) > picture,
+  html.js .shot > picture img,
+  html.js .shot:not(.is-visible) > picture img {
     opacity: 1;
     transform: none;
     clip-path: none;
@@ -678,12 +689,12 @@ html.js .shot:not(.is-visible) > picture {
   filter: drop-shadow(0 0 22px rgb(201 164 92 / 0.35));
 }
 
+/* Assinatura abaixo do lema, em caixa normal (nada de rótulo em versalete acima). */
 .site-footer__since {
   text-wrap: balance;
   font-size: var(--step--1);
   font-weight: 600;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--gold);
 }
 

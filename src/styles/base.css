@@ -91,11 +91,18 @@ h3 {
   text-wrap: balance;
 }
 
-/* h1 e h2 no peso 700: contraste claro com o texto corrido (Manrope 400). */
+/* Todos os títulos no peso 700: contraste claro de peso e tamanho com o texto corrido
+   (Manrope 400). */
 h1,
-h2 {
+h2,
+h3 {
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.025em;
 }
 
 p {
@@ -156,7 +163,7 @@ button {
 }
 
 .selo--hero {
-  width: clamp(5.5rem, 4rem + 6vw, 9rem);
+  width: clamp(4.5rem, 3rem + 5vw, 8.5rem);
 }
 
 .selo--footer {

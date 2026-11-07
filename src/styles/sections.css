@@ -849,11 +849,13 @@ html.js .strip__controls {
   font-size: var(--step-4);
 }
 
+/* Nome oficial da loja: itálico, em caixa normal, logo abaixo do título. */
 .visit__name {
-  font-size: var(--step--1);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-style: italic;
   font-weight: 600;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .visit__address {
@@ -884,7 +886,7 @@ html.js .strip__controls {
 }
 
 .visit__card--arcozelo .visit__name {
-  color: var(--gold);
+  color: var(--gold-soft);
 }
 
 .visit__card--arcozelo .visit__hours {
@@ -915,15 +917,16 @@ html.js .strip__controls {
 }
 
 /* ---------- Ritmo de fundos ----------
-   I preto · II tijolo · III creme · IV preto · V tijolo · VI creme · rodapé preto.
+   I preto · II cacau · III creme · IV preto · V cacau · VI creme · rodapé preto.
    O tijolinho desenhado (body::before/after) só aparece nas seções pretas, que não
-   pintam fundo. Nas seções claras o texto é marrom/preto e a terracota fica nos filetes
-   e acentos gráficos; dourado nunca vira texto sobre o creme. */
+   pintam fundo. O cacau é um marrom quente, nitidamente mais claro que o preto, para
+   cada bloco se separar do vizinho. Nas seções claras o texto é marrom/preto e a
+   terracota fica nos filetes e acentos gráficos; dourado nunca vira texto sobre o creme. */
 
 .chapter--fornada,
 .chapter--casas {
-  --section-bg: var(--brick);
-  background: var(--brick);
+  --section-bg: var(--cocoa);
+  background: var(--cocoa);
 }
 
 .chapter--confeitaria,
@@ -1018,4 +1021,24 @@ html.js .strip__controls {
   color: var(--ink);
   text-decoration-color: var(--terracotta);
   text-decoration-thickness: 2px;
+}
+
+/* Celular: os cartões das casas não são gêmeos. Arcozelo ocupa a coluna inteira e
+   ganha mais ar; Miguel Pereira recua à esquerda, avança até a borda da tela e fica
+   mais compacto. (No tablet e no desktop a variação vem das colunas 7/5 e do degrau.) */
+@media (max-width: 699px) {
+  .visit__card--arcozelo {
+    padding-block: clamp(2rem, 1.5rem + 3vw, 3rem);
+  }
+
+  .chapter--visite .visit__card--miguel-pereira {
+    margin-left: var(--space-l);
+    margin-right: calc(var(--gutter) * -1);
+    padding: 1.5rem var(--gutter) 1.75rem 1.5rem;
+    border-right: 0;
+  }
+
+  .visit__card--miguel-pereira .visit__title {
+    font-size: var(--step-3);
+  }
 }

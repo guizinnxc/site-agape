@@ -38,15 +38,21 @@ por cenário.
 - **"Vitrine noturna"**: fundo quase preto com tijolinho desenhado em CSS, fotos como janelas de luz
   quente e filetes dourados — a padaria à noite com a vitrine acesa.
 - **Tipografia**: Cormorant Garamond nos títulos (o tom do selo da casa) e Manrope no texto, servidas
-  pelo próprio site, sem chamadas externas.
-- **Cada capítulo tem uma composição própria**: o hero nasce numa moldura em arco (eco da porta de
-  Miguel Pereira) e se abre ao rolar; a fornada é uma colagem assimétrica; a confeitaria é uma
-  prateleira horizontal; "De perto" usa recortes em arco; as casas têm cores próprias (preto/dourado
-  em Arcozelo, pêssego/terracota em Miguel Pereira).
-- **Ritmo de fundos**: os capítulos alternam preto (com tijolinho), tijolo e creme; nas seções
-  creme o texto é marrom e a terracota fica nos filetes.
-- **Fotos entram suaves**: cada foto ampliável sobe e se revela uma vez ao chegar na tela
-  (sem JS ou com "reduzir movimento", aparece na hora).
+  pelo próprio site, sem chamadas externas. Todos os títulos no peso 700 e bem maiores que o texto
+  corrido (os títulos de capítulo vão de 3,4 a 8 vezes o corpo). Nenhum rótulo em caixa alta acima
+  dos títulos.
+- **Hero assimétrico**: o texto fica à esquerda, sobre o tijolinho, e a vitrine à direita, como uma
+  janela acesa que vai até a borda da tela; o selo dourado fica carimbado na emenda. No celular a
+  janela fica em cima, deslocada para a direita, e o texto embaixo, alinhado à esquerda. Ao abrir a
+  página, a janela se abre da direita para a esquerda e o texto sobe em sequência.
+- **Cada capítulo tem uma composição própria**: a fornada é uma colagem assimétrica; a confeitaria é
+  uma prateleira horizontal; "De perto" usa recortes em arco; as casas têm cores próprias
+  (preto/dourado em Arcozelo, pêssego/terracota em Miguel Pereira); os dois cartões de visita têm
+  tamanhos diferentes (colunas 7/5 no desktop, recuo e largura diferentes no celular).
+- **Ritmo de fundos**: os capítulos alternam preto (com tijolinho), cacau (marrom quente) e creme;
+  nas seções creme o texto é marrom e a terracota fica nos filetes.
+- **Fotos entram suaves**: cada foto ampliável sobe, se abre de baixo para cima e assenta de um
+  leve zoom, uma vez, ao chegar na tela (sem JS ou com "reduzir movimento", aparece na hora).
 - **Movimento contido**: uma curva só, revelações de 600 ms, apenas `transform`/`opacity`/`clip-path`;
   com "reduzir movimento" ativado tudo aparece no estado final.
 
@@ -109,7 +115,7 @@ publicar o site, a padaria deve conseguir essa autorização ou substituir essas
 - Sem JS (arquivos `.js` bloqueados): capítulos, painéis das duas casas e fotos como links continuam
   acessíveis e legíveis.
 - Abrindo `dist/index.html` direto do disco (`file://`): CSS, fotos e JS funcionam.
-- Peso da primeira tela no celular (cache vazio): cerca de 125 KB (limite adotado: 500 KB). Medido no
+- Peso da primeira tela no celular (cache vazio): cerca de 223 KB (limite adotado: 500 KB). Medido no
   `vite preview`, que serve os arquivos **sem gzip/brotli**: é um teto; numa hospedagem com compressão o
   HTML, o CSS e o JS pesam menos (as fotos AVIF/WebP/JPEG quase não mudam).
 - Testes unitários (Vitest) da renderização, do conteúdo, das imagens e dos módulos de interação.

@@ -1,94 +1,97 @@
-/* Capítulo I — A vitrine acende.
-   Foto da vitrine de ponta a ponta, com selo, kicker, título e botões centralizados
-   sobre um véu escuro (contraste AA). Composição fixa: sem expansão no scroll. */
+/* Capítulo I. A vitrine acende.
+   Composição assimétrica: o texto fica à esquerda, sobre o tijolinho, e a vitrine à
+   direita, como uma janela acesa que vai até a borda da tela. O selo dourado costura
+   as duas metades. No celular a janela fica em cima, deslocada para a direita (o selo
+   pequeno do cabeçalho ocupa a faixa livre), e o texto embaixo, alinhado à esquerda. */
 
 .hero {
   --hero-progress: 1;
   position: relative;
   display: grid;
-  grid-template: 1fr / 1fr;
+  grid-template-columns: minmax(0, 1fr);
+  /* Celular e tablet: a janela em cima e o texto centrado no espaço que sobra. */
+  grid-template-rows: auto 1fr;
   min-height: 100vh;
   min-height: 100svh;
   isolation: isolate;
   overflow: clip;
-  background: var(--ink);
 }
 
+/* ---------- A janela (foto) ---------- */
+
 .hero__frame {
-  grid-area: 1 / 1;
+  grid-row: 1;
   position: relative;
-  height: 100vh;
-  height: 100svh;
+  height: clamp(15rem, 46vh, 36rem);
+  height: clamp(15rem, 46svh, 36rem);
+  /* Faixa livre à esquerda: o selo do cabeçalho fica sobre o tijolinho, não sobre a foto. */
+  margin-left: calc(var(--gutter) + 4.25rem);
 }
-.hero__picture,
+
+.hero__picture {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--brick);
+}
+
 .hero__picture img {
   width: 100%;
   height: 100%;
-}
-
-.hero__picture img {
   object-fit: cover;
 }
 
-/* Véu escuro: garante contraste AA do título sobre a foto. */
+/* Filete dourado interno, como o anel duplo do selo. */
+.hero__frame::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  z-index: 1;
+  border: 1px solid rgb(226 201 143 / 0.42);
+  pointer-events: none;
+}
+
+/* Sombra no topo (o botão do cabeçalho fica legível) e na emenda com o tijolinho. */
 .hero__frame::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(
-      to top,
-      rgb(15 13 11 / 0.96) 0%,
-      rgb(15 13 11 / 0.9) 24%,
-      rgb(15 13 11 / 0.72) 42%,
-      rgb(15 13 11 / 0.22) 64%,
-      rgb(15 13 11 / 0.12) 76%,
-      rgb(15 13 11 / 0.55) 100%
-    );
+    linear-gradient(to bottom, rgb(15 13 11 / 0.5), transparent 30%),
+    linear-gradient(to right, rgb(15 13 11 / 0.4), transparent 24%);
 }
+
+/* O selo carimbado na borda da janela: metade sobre a foto, metade sobre o tijolinho. */
+.hero__seal {
+  position: absolute;
+  z-index: 2;
+  right: var(--gutter);
+  bottom: 0;
+  transform: translateY(50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(15 13 11 / 0.94), rgb(15 13 11 / 0.88) 82%, transparent);
+  filter: drop-shadow(0 6px 18px rgb(15 13 11 / 0.55));
+}
+
+/* ---------- O texto ---------- */
 
 .hero__content {
-  grid-area: 1 / 1;
+  grid-row: 2;
   position: relative;
   z-index: 1;
-  height: 100vh;
-  height: 100svh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: flex-start;
   gap: var(--space-xs);
-  /* Topo: o selo fica no fecho do arco (o arco começa a 18% da altura). */
-  padding: calc(18vh + 1.25rem) var(--gutter) calc(var(--bar-h) + clamp(1.75rem, 7svh, 4.5rem));
-  padding-top: calc(18svh + 1.25rem);
-  text-align: center;
-  text-shadow: 0 1px 18px rgb(15 13 11 / 0.65);
-}
-
-.hero__content .selo {
-  flex-shrink: 0;
-  margin-bottom: auto;
-  filter: drop-shadow(0 2px 14px rgb(15 13 11 / 0.7));
-  /* Halo escuro: o selo continua legível quando a foto já ocupa a tela toda
-     (movimento reduzido, sem JS ou ao fim da expansão). */
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(15 13 11 / 0.62), rgb(15 13 11 / 0.4) 78%, transparent);
-}
-
-.hero__kicker {
-  font-size: var(--step--1);
-  text-wrap: balance;
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  color: var(--gold-soft);
+  padding: var(--space-m) var(--gutter) calc(var(--bar-h) + var(--space-l));
 }
 
 .hero__title {
-  max-width: 16ch;
-  font-size: var(--step-5);
-  line-height: 0.95;
+  max-width: 12ch;
+  font-size: var(--step-hero);
+  line-height: 0.92;
   color: var(--cream);
 }
 
@@ -97,33 +100,31 @@
   font-style: italic;
   font-weight: 600;
   font-size: var(--step-2);
-  line-height: 1.2;
+  line-height: 1.15;
   color: var(--gold-soft);
+}
+
+.hero__places {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+
+.hero__places::before {
+  content: '';
+  flex: none;
+  width: 2rem;
+  height: 1px;
+  background: var(--gold);
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: var(--space-xs);
-  margin-top: var(--space-s);
-  text-shadow: none;
-}
-
-/* Celular: o kicker vira duas linhas fixas (lugares / "desde 2012"), sem partir o nome
-   da cidade; no desktop cabe numa linha só. */
-@media (max-width: 699px) {
-  .hero__kicker {
-    letter-spacing: 0.16em;
-  }
-
-  .hero__sep {
-    display: none;
-  }
-
-  .hero__since {
-    display: block;
-  }
+  margin-top: var(--space-xs);
 }
 
 @media (max-width: 559px) {
@@ -134,46 +135,151 @@
   }
 }
 
-/* Celular: o bloco de texto ocupa mais da foto, então o véu sobe junto. */
-@media (max-width: 699px) {
-  .hero__frame::after {
-    background: linear-gradient(
-      to top,
-      rgb(15 13 11 / 0.96) 0%,
-      rgb(15 13 11 / 0.9) 34%,
-      rgb(15 13 11 / 0.74) 56%,
-      rgb(15 13 11 / 0.3) 76%,
-      rgb(15 13 11 / 0.55) 100%
-    );
+/* Tablet em pé: a janela cresce e o recuo à esquerda acompanha. */
+@media (min-width: 700px) and (max-width: 899px) {
+  .hero__frame {
+    height: clamp(18rem, 56vh, 42rem);
+    height: clamp(18rem, 56svh, 42rem);
+    margin-left: calc(var(--gutter) + 7rem);
+  }
+
+  .hero__content {
+    padding-top: var(--space-l);
   }
 }
 
-/* Telas baixas (celular deitado, 320×640): compacta o bloco para caber no arco. */
-@media (max-height: 700px) {
+/* ---------- Desktop: texto à esquerda, janela à direita ---------- */
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    grid-template-rows: auto;
+  }
+
+  .hero__frame {
+    grid-column: 2;
+    grid-row: 1;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin-left: 0;
+  }
+
+  .hero__content {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+    gap: var(--space-s);
+    /* A margem esquerda alinha com a coluna de conteúdo dos outros capítulos. */
+    padding: 7.5rem var(--space-l) calc(var(--bar-h) + var(--space-xl))
+      max(var(--gutter), calc((100vw - var(--content) - var(--rail)) / 2));
+  }
+
+  .hero__actions {
+    margin-top: var(--space-s);
+  }
+
+  .hero__seal {
+    right: auto;
+    left: 0;
+    bottom: 16%;
+    transform: translateX(-50%);
+  }
+
   .hero__frame::after {
-    background: linear-gradient(
-      to top,
-      rgb(15 13 11 / 0.96) 0%,
-      rgb(15 13 11 / 0.9) 40%,
-      rgb(15 13 11 / 0.76) 66%,
-      rgb(15 13 11 / 0.4) 84%,
-      rgb(15 13 11 / 0.6) 100%
-    );
+    background:
+      linear-gradient(to bottom, rgb(15 13 11 / 0.45), transparent 22%),
+      linear-gradient(to right, rgb(15 13 11 / 0.5), transparent 28%);
+  }
+}
+
+/* Telas baixas (celular pequeno, notebook com pouca altura): a janela encolhe para o
+   título e o botão do WhatsApp aparecerem sem rolar. */
+@media (max-height: 700px) and (max-width: 899px) {
+  .hero__frame {
+    height: clamp(12rem, 36vh, 20rem);
+    height: clamp(12rem, 36svh, 20rem);
   }
 
   .hero__content {
     gap: var(--space-2xs);
-    padding-top: calc(18vh + 0.5rem);
-    padding-top: calc(18svh + 0.5rem);
-    padding-bottom: calc(var(--bar-h) + 1.25rem);
+    padding-top: var(--space-s);
   }
 
-  .hero__content .selo {
+  .hero .selo--hero {
     width: 4rem;
   }
+}
 
-  .hero__actions {
-    margin-top: var(--space-2xs);
-    gap: var(--space-2xs);
+@media (max-height: 700px) and (min-width: 900px) {
+  .hero__content {
+    padding-top: 6rem;
+    padding-bottom: var(--space-l);
+  }
+}
+
+/* ---------- Entrada ----------
+   A janela se abre da direita para a esquerda enquanto a foto assenta; o texto sobe em
+   sequência e o selo é carimbado por último. Só transform, opacity e clip-path.
+   Com "reduzir movimento" nada se move: tudo já nasce no estado final. */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__picture {
+    animation: hero-window 1400ms var(--ease) both;
+  }
+
+  .hero__picture img {
+    animation: hero-settle 2200ms var(--ease) both;
+  }
+
+  .hero__content > * {
+    animation: hero-rise 900ms var(--ease) both;
+  }
+
+  .hero__content > :nth-child(2) {
+    animation-delay: 110ms;
+  }
+
+  .hero__content > :nth-child(3) {
+    animation-delay: 200ms;
+  }
+
+  .hero__content > :nth-child(4) {
+    animation-delay: 290ms;
+  }
+
+  /* rotate e scale são propriedades próprias: somam ao transform de posição do selo. */
+  .hero__seal {
+    animation: hero-seal 1100ms var(--ease) 650ms both;
+  }
+}
+
+@keyframes hero-window {
+  from {
+    clip-path: inset(0 0 0 40%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes hero-settle {
+  from {
+    transform: scale(1.14);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+}
+
+@keyframes hero-seal {
+  from {
+    opacity: 0;
+    rotate: -30deg;
+    scale: 0.8;
   }
 }

@@ -82,29 +82,29 @@ function renderNav() {
 
 /* ---------- Capítulos ---------- */
 
+// Composição assimétrica: o texto fica de um lado, sobre o tijolinho, e a vitrine do outro,
+// como uma janela acesa. O título abre o bloco (sem rótulo acima); cidades e ano vêm abaixo.
 function renderVitrine() {
   const inner =
+    `<div class="hero__content">` +
+    `<h1 id="cap-1-title" class="hero__title">${esc(site.name)}</h1>` +
+    `<p class="hero__tagline">${esc(site.tagline)}</p>` +
+    // "Miguel Pereira" e "desde 2012" nunca se partem (espaço inseparável).
+    `<p class="hero__places">Arcozelo e Miguel&nbsp;Pereira, desde&nbsp;${site.since}</p>` +
+    `<div class="hero__actions">` +
+    `<a class="btn btn--primary" ${ext(whatsappUrl('Olá, Ágape! Quero fazer uma encomenda.'))}>Encomendar pelo WhatsApp</a>` +
+    `<a class="btn btn--ghost" href="#cap-2">Explorar</a>` +
+    `</div>` +
+    `</div>` +
     `<div class="hero__frame" data-hero-frame>` +
     renderPicture('vitrine-arcozelo', {
       alt: HERO_ALT,
-      sizes: '100vw',
+      sizes: '(min-width: 900px) 56vw, 80vw',
       priority: true,
       mobileId: 'vitrine-retrato',
       className: 'hero__picture',
     }) +
-    `</div>` +
-    `<div class="hero__content">` +
-    renderSelo({ className: 'selo--hero', id: 'selo-hero', decorative: true }) +
-    // Duas partes: no celular "desde 2012" desce para a 2ª linha sem o ponto, e o nome
-    // "Miguel Pereira" nunca se parte (espaço inseparável).
-    `<p class="hero__kicker"><span class="hero__places">Arcozelo · Miguel&nbsp;Pereira</span>` +
-    `<span class="hero__sep"> · </span><span class="hero__since">desde&nbsp;${site.since}</span></p>` +
-    `<h1 id="cap-1-title" class="hero__title">${esc(site.name)}</h1>` +
-    `<p class="hero__tagline">${esc(site.tagline)}</p>` +
-    `<div class="hero__actions">` +
-    `<a class="btn btn--ghost" href="#cap-2">Explorar</a>` +
-    `<a class="btn btn--primary" ${ext(whatsappUrl('Olá, Ágape! Quero fazer uma encomenda.'))}>Encomendar pelo WhatsApp</a>` +
-    `</div>` +
+    renderSelo({ className: 'selo--hero hero__seal', id: 'selo-hero', decorative: true }) +
     `</div>`;
   return section('vitrine', inner, { className: 'hero', attrs: 'data-hero' });
 }
@@ -313,8 +313,8 @@ function renderFooter() {
   return (
     `<footer class="site-footer">` +
     renderSelo({ className: 'selo--footer', id: 'selo-rodape', decorative: true }) +
-    `<p class="site-footer__since">${esc(site.name)} · Desde ${site.since}</p>` +
     `<p class="site-footer__motto">${esc(site.motto)}</p>` +
+    `<p class="site-footer__since">${esc(site.name)} · Desde ${site.since}</p>` +
     `<p class="site-footer__social"><a class="site-footer__instagram" ${ext(site.instagram)} aria-label="${esc(INSTAGRAM_LABEL)}">` +
     `${INSTAGRAM_ICON}</a></p>` +
     `<ul class="site-footer__credits">${list}</ul>` +

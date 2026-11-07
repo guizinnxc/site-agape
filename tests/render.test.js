@@ -209,18 +209,30 @@ describe('renderPage — componentes', () => {
     );
   });
 
-  it('hero (escolha do usuário): kicker com as cidades e "desde 2012" acima do título, foto de ponta a ponta', () => {
-    const kicker = document.querySelector('.hero__kicker');
-    const text = kicker.textContent.replace(/\u00a0/g, ' ');
+  it('hero assimétrico: título abre o bloco de texto, cidades e ano abaixo, foto em coluna própria', () => {
+    expect(document.querySelector('.hero__kicker')).toBeNull();
+    const content = document.querySelector('.hero__content');
+    expect(content.firstElementChild.id).toBe('cap-1-title');
+    const text = content.querySelector('.hero__places').textContent.replace(/\u00a0/g, ' ');
     expect(text).toContain('Arcozelo');
     expect(text).toContain('Miguel Pereira');
     expect(text).toContain(`desde ${site.since}`);
-    expect(kicker.nextElementSibling.id).toBe('cap-1-title');
-    expect(document.querySelector('.hero__frame img').getAttribute('sizes')).toBe('100vw');
+    // O CTA principal vem antes de "Explorar" (no celular ele precisa aparecer sem rolar).
+    const actions = [...content.querySelectorAll('.hero__actions a')].map((a) => a.textContent.trim());
+    expect(actions).toEqual(['Encomendar pelo WhatsApp', 'Explorar']);
+    // A foto não ocupa mais a tela inteira: no desktop é a coluna da direita.
+    expect(document.querySelector('.hero__frame img').getAttribute('sizes')).toBe('(min-width: 900px) 56vw, 80vw');
+    expect(document.querySelector('.hero__frame svg.selo.hero__seal')).not.toBeNull();
+  });
+
+  it('nome da loja nos cartões e assinatura do rodapé vêm abaixo do título/lema', () => {
+    for (const card of all('.visit__card')) expect(card.firstElementChild.classList.contains('visit__title')).toBe(true);
+    const motto = document.querySelector('.site-footer__motto');
+    expect(motto.nextElementSibling.classList.contains('site-footer__since')).toBe(true);
   });
 
   it('selo anunciado uma vez só: hero e rodapé ficam aria-hidden', () => {
-    for (const sel of ['.hero__content svg.selo', 'footer svg.selo']) {
+    for (const sel of ['.hero svg.selo', 'footer svg.selo']) {
       const svg = document.querySelector(sel);
       expect(svg.getAttribute('aria-hidden'), sel).toBe('true');
       expect(svg.hasAttribute('role'), sel).toBe(false);

@@ -9,6 +9,9 @@
   --muted: #b8ac98;
   --terracotta: #c98b4a;
   --peach: #f2dcc4;
+  /* Fundo das seções "tijolo" (II e V): marrom quente, claramente distinto do preto
+     do hero e de "De perto", para o ritmo preto · cacau · creme ser visível. */
+  --cocoa: #2b2018;
 
   /* Derivados (sempre a partir da paleta) */
   --line: rgb(201 164 92 / 0.32); /* filete dourado */
@@ -30,8 +33,10 @@
   --step-3: clamp(1.9rem, 1.5rem + 2vw, 3.25rem);
   --step-4: clamp(2.4rem, 1.75rem + 3.2vw, 4.6rem);
   --step-5: clamp(2.8rem, 1.9rem + 4.6vw, 6.4rem);
-  /* Títulos de capítulo (h2) e do hero (h1): bem acima do texto corrido. */
-  --step-6: clamp(3rem, 1.9rem + 5.4vw, 7.25rem);
+  /* Títulos de capítulo (h2): bem acima do texto corrido (3,4 a 8 vezes o corpo). */
+  --step-6: clamp(3.4rem, 2rem + 6.2vw, 8.25rem);
+  /* Título do hero (h1): cabe na coluna de texto da composição assimétrica. */
+  --step-hero: clamp(2.9rem, 1.7rem + 4.4vw, 6.4rem);
 
   --tracking-caps: 0.22em;
 
