@@ -185,10 +185,18 @@ describe('renderPage — componentes', () => {
       }
   });
 
-  it('eyebrow dos capítulos: "Capítulo II"', () => {
-    const eb = document.querySelector('#cap-2 .chapter__eyebrow');
-    expect(eb.textContent.trim()).toBe('Capítulo II');
-    expect(eb.querySelector('.chapter__roman').textContent).toBe('II');
+  it('sem rótulos em caixa alta acima dos títulos (eyebrow e kicker)', () => {
+    expect(document.querySelector('.chapter__eyebrow')).toBeNull();
+    expect(document.querySelector('.hero__kicker')).toBeNull();
+    // O título vem primeiro no cabeçalho de cada capítulo.
+    for (const head of all('.chapter__head')) expect(head.firstElementChild.tagName).toBe('H2');
+  });
+
+  it('hero: cidades e "desde 2012" em texto corrido', () => {
+    const lead = document.querySelector('.hero__lead');
+    expect(lead.textContent).toContain('Arcozelo');
+    expect(lead.textContent).toContain('Miguel Pereira');
+    expect(lead.textContent).toContain(`desde ${site.since}`);
   });
 
   it('selo anunciado uma vez só: hero e rodapé ficam aria-hidden', () => {

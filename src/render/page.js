@@ -22,7 +22,6 @@ function chapterHead(slug, intro) {
   const c = chapter(slug);
   return (
     `<header class="chapter__head" data-reveal>` +
-    `<p class="chapter__eyebrow">Capítulo <span class="chapter__roman">${c.roman}</span></p>` +
     `<h2 id="cap-${c.n}-title" class="chapter__title">${esc(c.name)}</h2>` +
     `<p class="chapter__intro">${esc(intro)}</p>` +
     `</header>`
@@ -96,12 +95,10 @@ function renderVitrine() {
     `</div>` +
     `<div class="hero__content">` +
     renderSelo({ className: 'selo--hero', id: 'selo-hero', decorative: true }) +
-    // Duas partes: no celular "desde 2012" desce para a 2ª linha sem o ponto, e o nome
-    // "Miguel Pereira" nunca se parte (espaço inseparável).
-    `<p class="hero__kicker"><span class="hero__places">Arcozelo · Miguel&nbsp;Pereira</span>` +
-    `<span class="hero__sep"> · </span><span class="hero__since">desde&nbsp;${site.since}</span></p>` +
     `<h1 id="cap-1-title" class="hero__title">${esc(site.name)}</h1>` +
     `<p class="hero__tagline">${esc(site.tagline)}</p>` +
+    // As duas cidades e o ano em texto corrido; "Miguel Pereira" nunca se parte.
+    `<p class="hero__lead">Em Arcozelo e no centro de Miguel&nbsp;Pereira, desde ${site.since}.</p>` +
     `<div class="hero__actions">` +
     `<a class="btn btn--ghost" href="#cap-2">Explorar</a>` +
     `<a class="btn btn--primary" ${ext(whatsappUrl('Olá, Ágape! Quero fazer uma encomenda.'))}>Encomendar pelo WhatsApp</a>` +
@@ -160,7 +157,6 @@ function renderConfeitaria() {
     ? `<div class="encomenda" data-reveal>` +
       productFigure(order, { className: 'encomenda__figure', sizes: '(min-width: 700px) 40vw, 100vw', reveal: false, caption: false }) +
       `<div class="encomenda__text">` +
-      `<p class="encomenda__tag">${esc(order.tag || 'Sob encomenda')}</p>` +
       `<h3 class="encomenda__title">${esc(order.name)}</h3>` +
       `<p class="encomenda__motto">Transformamos sonhos em bolo.</p>` +
       `<p>Aceitamos encomendas. Conte para a gente a ocasião e combine os detalhes pelo WhatsApp.</p>` +
@@ -217,8 +213,8 @@ function housePanel(h) {
     `<div role="tabpanel" id="panel-${h.slug}" aria-labelledby="tab-${h.slug}" data-house="${h.slug}"` +
     ` class="house house--${h.slug} house--${esc(h.accent)}">` +
     `<div class="house__intro" data-reveal>` +
-    `<p class="house__place">${esc(h.locality)}</p>` +
     `<h3 class="house__name">${esc(h.name)}</h3>` +
+    `<p class="house__place">${esc(h.locality)}, RJ</p>` +
     `<p class="house__note">${esc(h.note)}</p>` +
     `</div>` +
     `<ul class="house__gallery">${shots}</ul>` +
