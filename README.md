@@ -24,6 +24,10 @@ O `dist/` funciona de dois jeitos: publicado em qualquer hospedagem estática (c
 aberto com duplo clique em `dist/index.html`, sem servidor (o JS é um script clássico, sem módulos,
 e não há `fetch` em tempo de execução).
 
+**Ao publicar:** a tag `og:image` aponta para `img/og-vitrine.jpg`, um caminho relativo. Redes sociais e
+mensageiros só leem URL absoluta, então troque-a pelo endereço completo do site (ex.:
+`https://seu-dominio/img/og-vitrine.jpg`) em `src/render/page.js` quando houver domínio.
+
 `npm run e2e` usa o [agent-browser](https://www.npmjs.com/package/agent-browser) instalado globalmente
 (`npm i -g agent-browser && agent-browser install`). O script sobe o `vite preview` na porta 4173 (ela
 precisa estar livre), roda os cenários, grava as capturas em `test-results/` e imprime `PASS`/`FAIL`
@@ -97,7 +101,9 @@ publicar o site, a padaria deve conseguir essa autorização ou substituir essas
 - Sem JS (arquivos `.js` bloqueados): capítulos, painéis das duas casas e fotos como links continuam
   acessíveis e legíveis.
 - Abrindo `dist/index.html` direto do disco (`file://`): CSS, fotos e JS funcionam.
-- Peso da primeira tela no celular (cache vazio): cerca de 125 KB (limite adotado: 500 KB).
+- Peso da primeira tela no celular (cache vazio): cerca de 125 KB (limite adotado: 500 KB). Medido no
+  `vite preview`, que serve os arquivos **sem gzip/brotli**: é um teto; numa hospedagem com compressão o
+  HTML, o CSS e o JS pesam menos (as fotos AVIF/WebP/JPEG quase não mudam).
 - Testes unitários (Vitest) da renderização, do conteúdo, das imagens e dos módulos de interação.
 
 **Não testado:**
