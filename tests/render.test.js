@@ -273,6 +273,23 @@ describe('renderPage — componentes', () => {
     expect(footer.textContent).toContain('Google Maps');
   });
 
+  it('links do Instagram mostram o logo (SVG) com nome acessível', () => {
+    const links = all(`a[href="${site.instagram}"]`);
+    expect(links.length).toBeGreaterThan(0);
+    for (const a of links) {
+      expect(a.getAttribute('aria-label')).toBe('Instagram da Padaria Ágape (@padariaagape25)');
+      expect(a.getAttribute('target')).toBe('_blank');
+      expect(a.getAttribute('rel')).toBe('noopener');
+      expect(a.textContent.trim()).toBe('');
+      const svg = a.querySelector('svg');
+      expect(svg.getAttribute('aria-hidden')).toBe('true');
+      expect(svg.getAttribute('focusable')).toBe('false');
+      expect(svg.innerHTML).toContain('currentColor');
+      expect(svg.querySelectorAll('rect').length).toBe(1);
+      expect(svg.querySelectorAll('circle').length).toBe(2);
+    }
+  });
+
   it('ids únicos no documento', () => {
     const ids = all('[id]').map((el) => el.id);
     expect(new Set(ids).size).toBe(ids.length);

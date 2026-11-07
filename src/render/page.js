@@ -294,6 +294,16 @@ function renderLightbox() {
   );
 }
 
+// Logo do Instagram (quadrado arredondado, círculo e ponto), na cor do texto.
+const INSTAGRAM_ICON =
+  '<svg class="icon-instagram" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false"' +
+  ' fill="none" xmlns="http://www.w3.org/2000/svg">' +
+  '<rect x="3" y="3" width="18" height="18" rx="5.2" stroke="currentColor" stroke-width="1.8"/>' +
+  '<circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.8"/>' +
+  '<circle cx="17.3" cy="6.7" r="1.15" fill="currentColor"/>' +
+  '</svg>';
+const INSTAGRAM_LABEL = 'Instagram da Padaria Ágape (@padariaagape25)';
+
 function renderFooter() {
   const list = credits.map((c) => `<li>${esc(c)}</li>`).join('');
   return (
@@ -301,7 +311,8 @@ function renderFooter() {
     renderSelo({ className: 'selo--footer', id: 'selo-rodape', decorative: true }) +
     `<p class="site-footer__since">${esc(site.name)} · Desde ${site.since}</p>` +
     `<p class="site-footer__motto">${esc(site.motto)}</p>` +
-    `<p class="site-footer__social"><a ${ext(site.instagram)}>Instagram @padariaagape25</a></p>` +
+    `<p class="site-footer__social"><a class="site-footer__instagram" ${ext(site.instagram)} aria-label="${esc(INSTAGRAM_LABEL)}">` +
+    `${INSTAGRAM_ICON}</a></p>` +
     `<ul class="site-footer__credits">${list}</ul>` +
     `</footer>`
   );

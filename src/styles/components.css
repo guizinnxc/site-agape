@@ -683,12 +683,25 @@ html.js [data-reveal] {
   margin-top: var(--space-s);
 }
 
-.site-footer__social a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-weight: 600;
+/* Instagram: só o logo, na cor do texto; dourado no hover e no foco. Alvo de 48 px. */
+.site-footer__instagram {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   color: var(--cream);
+  transition: color var(--dur-ui) var(--ease);
+}
+
+.site-footer__instagram:hover,
+.site-footer__instagram:focus-visible {
+  color: var(--gold);
+}
+
+.site-footer__instagram svg {
+  width: 28px;
+  height: 28px;
 }
 
 .site-footer__credits {
