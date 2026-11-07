@@ -76,8 +76,8 @@ describe('conteúdo', () => {
   });
   it('capítulos e endereços', () => {
     expect(chapters.length).toBe(6);
-    expect(houses[0].address).toBe('R. Dr. Mario Kroeff, 95 – Arcozelo, Paty do Alferes – RJ, 26950-000');
-    expect(houses[1].address).toBe('R. Francisco Alves, 57 – Lj 3 – Centro, Miguel Pereira – RJ, 26900-000');
+    expect(houses[0].address).toBe('R. Dr. Mario Kroeff, 95, Arcozelo, Paty do Alferes, RJ, 26950-000');
+    expect(houses[1].address).toBe('R. Francisco Alves, 57, Loja 3, Centro, Miguel Pereira, RJ, 26900-000');
   });
   it('demais exports', () => {
     expect(products.length).toBe(15);

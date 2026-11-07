@@ -192,6 +192,22 @@ describe('renderPage — componentes', () => {
     for (const head of all('.chapter__head')) expect(head.firstElementChild.tagName).toBe('H2');
   });
 
+  it('sem travessões (— –) nem emojis no texto visível e nos atributos lidos', () => {
+    const DASH = /[—–]/;
+    const EMOJI = /\p{Extended_Pictographic}/u;
+    const texts = [document.body.textContent];
+    for (const attr of ['alt', 'aria-label', 'title', 'data-caption', 'data-credit'])
+      for (const el of all(`[${attr}]`)) texts.push(el.getAttribute(attr));
+    for (const t of all('title')) texts.push(t.textContent);
+    for (const t of texts) {
+      expect(t, t.slice(0, 80)).not.toMatch(DASH);
+      expect(t, t.slice(0, 80)).not.toMatch(EMOJI);
+    }
+    expect(document.querySelector('.site-header svg.selo title').textContent).toBe(
+      'Padaria e Confeitaria Ágape, voltar ao início'
+    );
+  });
+
   it('hero: cidades e "desde 2012" em texto corrido', () => {
     const lead = document.querySelector('.hero__lead');
     expect(lead.textContent).toContain('Arcozelo');
@@ -341,6 +357,11 @@ describe('renderHead', () => {
     const data = JSON.parse(json);
     const bakeries = data['@graph'];
     expect(bakeries.length).toBe(2);
+    expect(bakeries.map((b) => b.address.streetAddress)).toEqual([
+      'R. Dr. Mario Kroeff, 95, Arcozelo',
+      'R. Francisco Alves, 57, Loja 3, Centro',
+    ]);
+    expect(json).not.toMatch(/[—–]/);
     bakeries.forEach((b, i) => {
       expect(b['@type']).toBe('Bakery');
       expect(b.telephone).toBe('+55-24-98110-0190');

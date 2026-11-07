@@ -56,7 +56,7 @@ function renderHeader() {
   return (
     `<header class="site-header">` +
     `<a class="site-header__brand" href="#cap-1">` +
-    renderSelo({ className: 'selo--small', id: 'selo-topo', title: 'Padaria e Confeitaria Ágape — início' }) +
+    renderSelo({ className: 'selo--small', id: 'selo-topo', title: 'Padaria e Confeitaria Ágape, voltar ao início' }) +
     `</a>` +
     `<a class="btn btn--whatsapp site-header__cta" ${ext(whatsappUrl('Olá, Ágape! Quero fazer uma encomenda.'))}>` +
     `Encomendar</a>` +
