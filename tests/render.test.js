@@ -211,6 +211,22 @@ describe('renderPage — componentes', () => {
     }
   });
 
+  it('hero no celular: retrato da vitrine de doces, que não se repete no resto da página', () => {
+    const src = document.querySelector('.hero__picture source[media]');
+    expect(src.getAttribute('media')).toBe('(max-width: 699px)');
+    expect(src.getAttribute('srcset')).toContain('img/vitrine-retrato-');
+    expect(manifest['vitrine-retrato'].width).toBeGreaterThanOrEqual(600);
+    expect(manifest['vitrine-retrato'].height).toBeGreaterThan(manifest['vitrine-retrato'].width);
+    expect(document.querySelector('[data-lightbox="vitrine-retrato"]')).toBeNull();
+    expect(document.querySelector('.hero__picture img').getAttribute('alt')).toMatch(/doces/);
+  });
+
+  it('De perto: texturas com pelo menos 600 px de largura', () => {
+    for (const a of all('#cap-4 a.shot')) {
+      expect(manifest[a.getAttribute('data-lightbox')].width).toBeGreaterThanOrEqual(600);
+    }
+  });
+
   it('De perto: mosaico com 3 fotos ampliáveis', () => {
     expect(all('#cap-4 a.shot').length).toBe(3);
   });

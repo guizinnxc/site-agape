@@ -57,6 +57,23 @@ describe('conteúdo', () => {
     expect(products.some((p) => p.id === 'padeiros' || p.image === 'padeiros')).toBe(false);
     expect(ids.has('padeiros')).toBe(false);
   });
+  it('De perto: 3 texturas próprias, recortadas, sem repetir fotos de outros capítulos ou das casas', () => {
+    const perto = products.filter((p) => p.chapter === 'perto');
+    expect(perto.map((p) => p.image)).toEqual(['sonho-acucar', 'bolo-farofa', 'pao-na-chapa']);
+    const others = new Set([
+      ...products.filter((p) => p.chapter !== 'perto').map((p) => p.image),
+      ...houses.flatMap((h) => h.images.map((im) => im.id)),
+    ]);
+    for (const p of perto) {
+      expect(others.has(p.image), p.image).toBe(false);
+      const cfg = IMAGES.find((i) => i.id === p.image);
+      expect(cfg.crop, p.image).toBeDefined();
+    }
+  });
+  it('cada foto aparece uma vez só entre produtos e casas', () => {
+    const all = [...products.map((p) => p.image), ...houses.flatMap((h) => h.images.map((im) => im.id))];
+    expect(new Set(all).size).toBe(all.length);
+  });
   it('capítulos e endereços', () => {
     expect(chapters.length).toBe(6);
     expect(houses[0].address).toBe('R. Dr. Mario Kroeff, 95 – Arcozelo, Paty do Alferes – RJ, 26950-000');

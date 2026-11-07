@@ -90,12 +90,12 @@ export const products = [
   { id: 'bolo-festa', name: 'Bolos sob encomenda', chapter: 'confeitaria', image: 'bolo-festa', tag: 'Sob encomenda',
     alt: 'Bolo com chantilly e calda de chocolate, ao lado de Papai Noel, ursinho e árvores de Natal', caption: 'Transformamos sonhos em bolo' },
   // Capítulo IV — De perto
-  { id: 'vitrine-miguel', name: 'Vitrine de doces', chapter: 'perto', image: 'vitrine-miguel',
-    alt: 'Vitrine de doces da loja de Miguel Pereira vista de perto', caption: 'Vitrine de doces' },
-  { id: 'ilha-paes', name: 'Pães na ilha', chapter: 'perto', image: 'ilha-paes',
-    alt: 'Pães dispostos na ilha central da loja, vistos de perto', caption: 'Pães na ilha' },
-  { id: 'cafe-manha', name: 'Café da manhã', chapter: 'perto', image: 'cafe-manha',
-    alt: 'Fatias de pão na chapa em um prato, ao lado de um copo com bebida cremosa, sobre mesa de madeira', caption: 'Café da manhã' },
+  { id: 'sonho-acucar', name: 'Açúcar no sonho', chapter: 'perto', image: 'sonho-acucar',
+    alt: 'Sonhos polvilhados com açúcar, com recheio cremoso amarelo, vistos bem de perto', caption: 'Açúcar no sonho' },
+  { id: 'bolo-farofa', name: 'Farofa e cerejas', chapter: 'perto', image: 'bolo-farofa',
+    alt: 'Cerejas sobre bolinhas de cobertura marrom, farofa crocante e as camadas de um bolo, vistas de perto', caption: 'Farofa e cerejas' },
+  { id: 'pao-na-chapa', name: 'Pão na chapa', chapter: 'perto', image: 'pao-na-chapa',
+    alt: 'Duas fatias de pão na chapa, douradas e tostadas, em um prato branco com o logo da Padaria Ágape', caption: 'Pão na chapa' },
 ];
 
 export const alsoMade = ['Lasanha no pão', 'Pão de queijo', 'Bolo de aipim', 'Chocolate quente', 'Café'];

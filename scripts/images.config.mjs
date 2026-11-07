@@ -20,14 +20,20 @@ export const IMAGES = [
   item('mercearia', 'maps-arcozelo/maps-arc-10.jpg'),
   item('fachada-miguel', 'maps-miguel/maps-mig-01.jpg'),
   item('bolo-cerejas', 'maps-miguel/maps-mig-02.jpg'),
-  item('vitrine-miguel', 'maps-miguel/maps-mig-03.jpg'),
-  item('torta-surpresa', 'maps-miguel/maps-mig-04.jpg', { crop: { left: 0.25, top: 0, width: 0.75, height: 0.55 } }),
+  // focal: object-position do recorte em capa; o topo de morangos fica à vista.
+  item('torta-surpresa', 'maps-miguel/maps-mig-04.jpg', { crop: { left: 0.25, top: 0, width: 0.75, height: 0.55 }, focal: '50% 20%' }),
   item('rocambole', 'maps-miguel/maps-mig-05.jpg', { crop: { left: 0.35, top: 0, width: 0.65, height: 0.65 } }),
   item('salao-miguel', 'maps-miguel/maps-mig-06.jpg'),
   item('balcao-miguel', 'maps-miguel/maps-mig-07.jpg'),
   item('tranca-coco', 'maps-miguel/maps-mig-08.jpg', { crop: { left: 0, top: 0, width: 1, height: 0.62 } }),
-  item('cafe-manha', 'maps-miguel/maps-mig-10.jpg'),
   item('torta-pudim', 'instagram/post-DZz82hDEUnh-2.jpg'),
   item('torta-pudim-duo', 'instagram/post-DZz82hDEUnh-1.jpg', { crop: { left: 0, top: 0.28, width: 1, height: 0.72 } }),
   item('bolo-festa', 'instagram/post-De5L3iXRbiT-1.jpg'),
+  // Hero no celular: retrato da vitrine de Miguel Pereira (tortinhas, pães de coco e donuts).
+  // Etiquetas antigas só no terço de baixo, sob o véu escuro do hero.
+  item('vitrine-retrato', 'maps-miguel/maps-mig-03.jpg', { crop: { left: 0.0625, top: 0.1, width: 0.375, height: 0.9 } }),
+  // Capítulo IV — De perto: recortes fechados de textura, sem etiquetas de preço.
+  item('sonho-acucar', 'maps-arcozelo/maps-arc-03.jpg', { crop: { left: 0.344, top: 0, width: 0.469, height: 1 } }),
+  item('bolo-farofa', 'maps-miguel/maps-mig-02.jpg', { crop: { left: 0.3, top: 0.18, width: 0.4, height: 0.82 } }),
+  item('pao-na-chapa', 'maps-miguel/maps-mig-10.jpg', { crop: { left: 0.156, top: 0.29, width: 0.375, height: 0.71 } }),
 ];
