@@ -18,6 +18,15 @@ export function initLightbox(root = document) {
     idx = (i + shots.length) % shots.length;
     const a = shots[idx];
     const thumb = a.querySelector('img');
+    // srcset/sizes vêm do a.shot: o navegador escolhe a largura certa; src é o reserva.
+    const set = a.dataset.srcset;
+    if (set) {
+      img.setAttribute('srcset', set);
+      img.setAttribute('sizes', '100vw');
+    } else {
+      img.removeAttribute('srcset');
+      img.removeAttribute('sizes');
+    }
     img.setAttribute('src', a.getAttribute('href'));
     img.alt = (thumb && thumb.alt) || '';
     cap.textContent = a.dataset.caption || '';

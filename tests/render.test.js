@@ -165,6 +165,46 @@ describe('renderPage — componentes', () => {
     expect(track.querySelectorAll('a.shot').length).toBeGreaterThanOrEqual(4);
   });
 
+  it('fornada: ordem do DOM = ordem visual (destaque primeiro)', () => {
+    const ids = all('#cap-2 .fornada a.shot').map((a) => a.getAttribute('data-lightbox'));
+    expect(ids).toEqual(['paes-estante', 'sonhos', 'tranca-coco', 'pao-frances']);
+  });
+
+  it('legendas das fotos das casas são os nomes curtos do conteúdo', () => {
+    for (const h of houses)
+      for (const im of h.images) {
+        const a = document.querySelector(`a.shot[data-lightbox="${im.id}"]`);
+        if (im.id === 'cafe-neon') continue; // ponte: legenda é o lema
+        expect(a.getAttribute('data-caption'), im.id).toBe(im.caption);
+      }
+  });
+
+  it('eyebrow dos capítulos: "Capítulo II"', () => {
+    const eb = document.querySelector('#cap-2 .chapter__eyebrow');
+    expect(eb.textContent.trim()).toBe('Capítulo II');
+    expect(eb.querySelector('.chapter__roman').textContent).toBe('II');
+  });
+
+  it('selo anunciado uma vez só: hero e rodapé ficam aria-hidden', () => {
+    for (const sel of ['.hero__content svg.selo', 'footer svg.selo']) {
+      const svg = document.querySelector(sel);
+      expect(svg.getAttribute('aria-hidden'), sel).toBe('true');
+      expect(svg.hasAttribute('role'), sel).toBe(false);
+      expect(svg.querySelector('title'), sel).toBeNull();
+    }
+    const top = document.querySelector('.site-header svg.selo');
+    expect(top.getAttribute('role')).toBe('img');
+    expect(top.querySelector('title').textContent.length).toBeGreaterThan(5);
+  });
+
+  it('a.shot leva o srcset do JPEG para a galeria ampliada', () => {
+    for (const a of all('a.shot')) {
+      const m = manifest[a.getAttribute('data-lightbox')];
+      const srcset = a.getAttribute('data-srcset');
+      expect(srcset).toBe(m.widths.map((w) => `img/${a.getAttribute('data-lightbox')}-${w}.jpg ${w}w`).join(', '));
+    }
+  });
+
   it('De perto: mosaico com 3 fotos ampliáveis', () => {
     expect(all('#cap-4 a.shot').length).toBe(3);
   });
@@ -220,7 +260,7 @@ describe('renderPage — componentes', () => {
 
   it('rodapé com selo, Instagram, créditos e Desde 2012', () => {
     const footer = document.querySelector('footer');
-    expect(footer.querySelector('svg[role="img"]')).not.toBeNull();
+    expect(footer.querySelector('svg.selo[aria-hidden="true"]')).not.toBeNull();
     expect(footer.querySelector(`a[href="${site.instagram}"]`)).not.toBeNull();
     expect(footer.textContent).toContain('Desde 2012');
     expect(footer.textContent).toContain('Instagram @padariaagape25');

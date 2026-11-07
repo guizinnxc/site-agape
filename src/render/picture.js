@@ -76,6 +76,7 @@ export function renderShot(id, { alt, caption, sizes, className, pictureClass })
   const cls = className ? `shot ${className}` : 'shot';
   return (
     `<a class="${esc(cls)}" href="${largestSrc(id, m)}" data-lightbox="${esc(id)}"` +
+    ` data-srcset="${srcset(id, m.widths, 'jpg')}"` +
     ` data-caption="${esc(caption)}" data-credit="${esc(credit)}">` +
     renderPicture(id, { alt, sizes, className: pictureClass }) +
     `</a>`
