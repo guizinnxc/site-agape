@@ -53,7 +53,7 @@ por cenário.
 ## Como trocar ou acrescentar fotos
 
 1. Coloque o arquivo original em `assets/originais/<pasta>/`. A pasta define o crédito:
-   `instagram/` → "Foto: Instagram @padariaagape25"; qualquer outra (ex.: `maps-arcozelo/`,
+   `instagram/` e `instagram-perfil/` → "Foto: Instagram @padariaagape25"; qualquer outra (ex.: `maps-arcozelo/`,
    `maps-miguel/`) → "Foto: cliente no Google Maps".
 2. Em `scripts/images.config.mjs`, troque o `src` do item existente ou acrescente um novo:
    `item('nome-da-foto', 'instagram/arquivo.jpg')`. Opcionais: `crop` (frações de 0 a 1:
@@ -79,13 +79,17 @@ Vêm de `pending` em `src/content.js` e dependem da padaria:
 - **Autorização das fotos de clientes do Google Maps** (ver abaixo).
 - **Torta Pudim ainda é novidade?** O post é de junho de 2026; o site deixou de usar a etiqueta
   "Novidade" até a padaria confirmar.
+- **Nome das roscas embaladas**: o catálogo das fotos as descreve como roscas ou biscoitos; o site usa "Roscas".
 
 ## Créditos e aviso sobre as fotos
 
 - Fotos do Instagram oficial [@padariaagape25](https://www.instagram.com/padariaagape25/).
 - Fotos de clientes publicadas no Google Maps (Arcozelo e Miguel Pereira).
 
-Cada foto mostra o crédito da origem na galeria ampliada, e o rodapé lista as duas fontes.
+Os capítulos de produtos (A fornada, Confeitaria, De perto e a encomenda) usam só fotos do Instagram
+da padaria (`assets/originais/instagram-perfil/`, ver `CATALOGO.md`); as fotos de clientes ficam no
+hero e nas duas casas. Cada foto mostra o crédito da origem na galeria ampliada, e o rodapé lista as
+duas fontes.
 **A autorização formal de uso das fotos de clientes do Google Maps ainda não foi obtida.** Antes de
 publicar o site, a padaria deve conseguir essa autorização ou substituir essas fotos por fotos próprias
 (o passo a passo acima).

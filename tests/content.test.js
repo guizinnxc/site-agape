@@ -59,7 +59,7 @@ describe('conteúdo', () => {
   });
   it('De perto: 3 texturas próprias, recortadas, sem repetir fotos de outros capítulos ou das casas', () => {
     const perto = products.filter((p) => p.chapter === 'perto');
-    expect(perto.map((p) => p.image)).toEqual(['sonho-acucar', 'bolo-farofa', 'pao-na-chapa']);
+    expect(perto.map((p) => p.image)).toEqual(['chocolate-quente', 'tortelete-physalis', 'chantilly-cereja']);
     const others = new Set([
       ...products.filter((p) => p.chapter !== 'perto').map((p) => p.image),
       ...houses.flatMap((h) => h.images.map((im) => im.id)),
@@ -68,6 +68,12 @@ describe('conteúdo', () => {
       expect(others.has(p.image), p.image).toBe(false);
       const cfg = IMAGES.find((i) => i.id === p.image);
       expect(cfg.crop, p.image).toBeDefined();
+    }
+  });
+  it('capítulos de produtos (II, III, IV e encomenda) só com fotos do Instagram da padaria', () => {
+    for (const p of products) {
+      const cfg = IMAGES.find((i) => i.id === p.image);
+      expect(cfg.credit, p.image).toBe('instagram');
     }
   });
   it('cada foto aparece uma vez só entre produtos e casas', () => {
@@ -80,10 +86,10 @@ describe('conteúdo', () => {
     expect(houses[1].address).toBe('R. Francisco Alves, 57, Loja 3, Centro, Miguel Pereira, RJ, 26900-000');
   });
   it('demais exports', () => {
-    expect(products.length).toBe(15);
-    expect(alsoMade.length).toBe(5);
+    expect(products.length).toBe(21);
+    expect(alsoMade.length).toBe(12);
     expect(credits.length).toBe(2);
-    expect(pending.length).toBe(5);
+    expect(pending.length).toBe(6);
     expect(creditText.instagram).toBe('Foto: Instagram @padariaagape25');
     expect(creditText.maps).toBe('Foto: cliente no Google Maps');
   });

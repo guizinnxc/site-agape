@@ -169,7 +169,7 @@
     --ratio: 1 / 1;
   }
 
-  /* Pão francês: recorte pequeno que avança sobre o canto da foto principal. */
+  /* Esfihas: recorte pequeno que avança sobre o canto da foto principal. */
   .fornada__item--detail {
     grid-column: 5 / span 3;
     grid-row: 2;
@@ -423,7 +423,7 @@ html.js .strip__controls {
   outline: 2px solid var(--gold);
 }
 
-/* Sonho: o arco grande, sozinho na primeira linha no celular. */
+/* Chocolate quente: o arco grande, sozinho na primeira linha no celular. */
 .mosaic__item--1 {
   grid-column: 1 / -1;
 }

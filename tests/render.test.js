@@ -173,7 +173,7 @@ describe('renderPage — componentes', () => {
 
   it('fornada: ordem do DOM = ordem visual (destaque primeiro)', () => {
     const ids = all('#cap-2 .fornada a.shot').map((a) => a.getAttribute('data-lightbox'));
-    expect(ids).toEqual(['paes-estante', 'sonhos', 'tranca-coco', 'pao-frances']);
+    expect(ids).toEqual(['pao-fermentacao', 'pao-sovado', 'paes-trancados', 'esfihas', 'bolo-pamonha', 'bolo-caseiro', 'roscas']);
   });
 
   it('legendas das fotos das casas são os nomes curtos do conteúdo', () => {
@@ -408,20 +408,20 @@ describe('renderPicture', () => {
       alt: 'Vitrine',
       sizes: '100vw',
       priority: true,
-      mobileId: 'paes-estante',
+      mobileId: 'pao-fermentacao',
     });
     expect(html).toContain('fetchpriority="high"');
     expect(html).not.toContain('loading=');
     const firstSource = html.match(/<source[^>]*>/)[0];
     expect(firstSource).toContain('media="(max-width: 699px)"');
-    expect(firstSource).toContain('img/paes-estante-480.avif 480w');
+    expect(firstSource).toContain('img/pao-fermentacao-480.avif 480w');
     expect(html).toContain('type="image/jpeg"');
     // fontes de celular vêm antes das fontes padrão
-    expect(html.indexOf('paes-estante')).toBeLessThan(html.indexOf('vitrine-arcozelo-640.avif'));
+    expect(html.indexOf('pao-fermentacao')).toBeLessThan(html.indexOf('vitrine-arcozelo-640.avif'));
   });
 
   it('escapa o alt', () => {
-    const html = renderPicture('sonhos', { alt: 'a "b" <c> & d', sizes: '1px' });
+    const html = renderPicture('macarons', { alt: 'a "b" <c> & d', sizes: '1px' });
     expect(html).toContain('alt="a &quot;b&quot; &lt;c&gt; &amp; d"');
   });
 });

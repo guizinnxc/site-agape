@@ -10,70 +10,6 @@
     "focal": "50% 50%",
     "credit": "maps"
   },
-  "vitrine-arco": {
-    "width": 672,
-    "height": 652,
-    "widths": [
-      480,
-      672
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "paes-estante": {
-    "width": 1200,
-    "height": 1600,
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "pao-frances": {
-    "width": 600,
-    "height": 400,
-    "widths": [
-      480,
-      600
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "sonhos": {
-    "width": 1280,
-    "height": 720,
-    "widths": [
-      480,
-      960,
-      1280
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "bolos-chocolate": {
-    "width": 1170,
-    "height": 855,
-    "widths": [
-      480,
-      960,
-      1170
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "doces-chocolate": {
-    "width": 1170,
-    "height": 1510,
-    "widths": [
-      480,
-      960,
-      1170
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
   "ilha-paes": {
     "width": 1200,
     "height": 1600,
@@ -117,39 +53,6 @@
     "focal": "50% 50%",
     "credit": "maps"
   },
-  "bolo-cerejas": {
-    "width": 1600,
-    "height": 900,
-    "widths": [
-      480,
-      960,
-      1600
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "torta-surpresa": {
-    "width": 1200,
-    "height": 660,
-    "widths": [
-      480,
-      960,
-      1200
-    ],
-    "focal": "50% 20%",
-    "credit": "maps"
-  },
-  "rocambole": {
-    "width": 1040,
-    "height": 585,
-    "widths": [
-      480,
-      960,
-      1040
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
   "salao-miguel": {
     "width": 738,
     "height": 1600,
@@ -170,16 +73,167 @@
     "focal": "50% 50%",
     "credit": "maps"
   },
-  "tranca-coco": {
-    "width": 1200,
-    "height": 992,
+  "vitrine-retrato": {
+    "width": 392,
+    "height": 1080,
     "widths": [
-      480,
-      960,
-      1200
+      392
     ],
     "focal": "50% 50%",
     "credit": "maps"
+  },
+  "pao-fermentacao": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  },
+  "pao-sovado": {
+    "width": 1440,
+    "height": 1920,
+    "widths": [
+      480,
+      960,
+      1440
+    ],
+    "focal": "50% 68%",
+    "credit": "instagram"
+  },
+  "paes-trancados": {
+    "width": 1440,
+    "height": 1800,
+    "widths": [
+      480,
+      960,
+      1440
+    ],
+    "focal": "50% 62%",
+    "credit": "instagram"
+  },
+  "esfihas": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  },
+  "bolo-pamonha": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 66%",
+    "credit": "instagram"
+  },
+  "bolo-caseiro": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 62%",
+    "credit": "instagram"
+  },
+  "roscas": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 60%",
+    "credit": "instagram"
+  },
+  "tortinhas-morango": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 78%",
+    "credit": "instagram"
+  },
+  "tortelete-limao": {
+    "width": 960,
+    "height": 1117,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  },
+  "macarons": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 62%",
+    "credit": "instagram"
+  },
+  "mil-folhas": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 60%",
+    "credit": "instagram"
+  },
+  "brownie-recheado": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 55%",
+    "credit": "instagram"
+  },
+  "quindim": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
+  },
+  "croissant-amor": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 62%",
+    "credit": "instagram"
+  },
+  "torta-amendoim": {
+    "width": 960,
+    "height": 1200,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 50%",
+    "credit": "instagram"
   },
   "torta-pudim": {
     "width": 1080,
@@ -192,65 +246,58 @@
     "focal": "50% 50%",
     "credit": "instagram"
   },
-  "torta-pudim-duo": {
-    "width": 1080,
-    "height": 972,
+  "torta-chantilly": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      480,
+      960
+    ],
+    "focal": "50% 66%",
+    "credit": "instagram"
+  },
+  "bolo-frutas-vermelhas": {
+    "width": 1066,
+    "height": 1331,
     "widths": [
       480,
       960,
-      1080
+      1066
     ],
     "focal": "50% 50%",
     "credit": "instagram"
   },
-  "bolo-festa": {
-    "width": 1600,
-    "height": 2133,
+  "chocolate-quente": {
+    "width": 1224,
+    "height": 1632,
     "widths": [
       480,
       960,
-      1600
+      1224
     ],
     "focal": "50% 50%",
     "credit": "instagram"
   },
-  "vitrine-retrato": {
-    "width": 392,
-    "height": 1080,
-    "widths": [
-      392
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "sonho-acucar": {
-    "width": 600,
-    "height": 720,
+  "tortelete-physalis": {
+    "width": 1008,
+    "height": 1008,
     "widths": [
       480,
-      600
+      960,
+      1008
     ],
     "focal": "50% 50%",
-    "credit": "maps"
+    "credit": "instagram"
   },
-  "bolo-farofa": {
-    "width": 640,
-    "height": 738,
+  "chantilly-cereja": {
+    "width": 1152,
+    "height": 1152,
     "widths": [
       480,
-      640
+      960,
+      1152
     ],
     "focal": "50% 50%",
-    "credit": "maps"
-  },
-  "pao-na-chapa": {
-    "width": 600,
-    "height": 525,
-    "widths": [
-      480,
-      600
-    ],
-    "focal": "50% 50%",
-    "credit": "maps"
+    "credit": "instagram"
   }
 }

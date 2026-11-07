@@ -111,10 +111,10 @@ function renderVitrine() {
 
 // Papéis na composição assimétrica da fornada; produtos novos caem em "extra".
 const FORNADA_ROLES = {
-  'paes-estante': { role: 'lead', sizes: '(min-width: 1024px) 46vw, 100vw' },
-  sonhos: { role: 'offset-a', sizes: '(min-width: 1024px) 30vw, (min-width: 700px) 45vw, 100vw' },
-  'tranca-coco': { role: 'offset-b', sizes: '(min-width: 1024px) 30vw, (min-width: 700px) 45vw, 100vw' },
-  'pao-frances': { role: 'detail', sizes: '(min-width: 700px) 24vw, 70vw' },
+  'pao-fermentacao': { role: 'lead', sizes: '(min-width: 1024px) 46vw, 100vw' },
+  'pao-sovado': { role: 'offset-a', sizes: '(min-width: 1024px) 30vw, (min-width: 700px) 45vw, 100vw' },
+  'paes-trancados': { role: 'offset-b', sizes: '(min-width: 1024px) 30vw, (min-width: 700px) 45vw, 100vw' },
+  esfihas: { role: 'detail', sizes: '(min-width: 700px) 24vw, 70vw' },
 };
 
 function renderFornada() {
@@ -129,7 +129,7 @@ function renderFornada() {
   const inner =
     chapterHead(
       'fornada',
-      'Pão francês, sonho, trança recheada de coco e os pães da casa: delícias artesanais todos os dias, direto da fornada para o balcão.'
+      'Pão de fermentação natural, pão sovado com farofa doce, pães trançados, esfihas e bolos caseiros: delícias artesanais todos os dias, direto da fornada para o balcão.'
     ) +
     `<div class="fornada">${grid}</div>` +
     `<div class="also-made" data-reveal>` +
@@ -139,7 +139,7 @@ function renderFornada() {
   return section('fornada', inner);
 }
 
-const ORDER_ID = 'bolo-festa';
+const ORDER_ID = 'bolo-frutas-vermelhas';
 
 function renderConfeitaria() {
   const items = byChapter('confeitaria');
@@ -169,7 +169,7 @@ function renderConfeitaria() {
   const inner =
     chapterHead(
       'confeitaria',
-      'Na vitrine de doces, a Torta Pudim divide espaço com rocambole, torta surpresa de morango com chocolate e bolos que pedem um café.'
+      'Na vitrine de doces, tortinhas de morango, tortelete de limão, macarons, quindim e mil-folhas nevado dividem espaço com a Torta Pudim e tortas que pedem um café.'
     ) +
     `<div class="strip" data-carousel>` +
     `<ul class="strip__track" data-carousel-track tabindex="0" aria-label="Confeitaria">${cards}</ul>` +
