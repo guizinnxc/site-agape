@@ -21,7 +21,7 @@ function chapterHead(slug, intro) {
   const c = chapter(slug);
   return (
     `<header class="chapter__head" data-reveal>` +
-    `<p class="chapter__eyebrow"><span class="chapter__roman">${c.roman}</span> Capítulo</p>` +
+    `<p class="chapter__eyebrow">Capítulo <span class="chapter__roman">${c.roman}</span></p>` +
     `<h2 id="cap-${c.n}-title" class="chapter__title">${esc(c.name)}</h2>` +
     `<p class="chapter__intro">${esc(intro)}</p>` +
     `</header>`
