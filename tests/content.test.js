@@ -53,10 +53,9 @@ describe('conteúdo', () => {
         expect(im.caption.length, im.id).toBeLessThanOrEqual(40);
       }
   });
-  it('alt dos padeiros descreve a foto (quatro homens posando)', () => {
-    const alt = products.find((p) => p.id === 'padeiros').alt;
-    expect(alt).toMatch(/[Qq]uatro/);
-    expect(alt).not.toMatch(/trabalhando/);
+  it('sem a seção dos padeiros (pedido da padaria)', () => {
+    expect(products.some((p) => p.id === 'padeiros' || p.image === 'padeiros')).toBe(false);
+    expect(ids.has('padeiros')).toBe(false);
   });
   it('capítulos e endereços', () => {
     expect(chapters.length).toBe(6);
@@ -64,7 +63,7 @@ describe('conteúdo', () => {
     expect(houses[1].address).toBe('R. Francisco Alves, 57 – Lj 3 – Centro, Miguel Pereira – RJ, 26900-000');
   });
   it('demais exports', () => {
-    expect(products.length).toBe(16);
+    expect(products.length).toBe(15);
     expect(alsoMade.length).toBe(5);
     expect(credits.length).toBe(2);
     expect(pending.length).toBe(5);

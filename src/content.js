@@ -72,8 +72,6 @@ export const products = [
     alt: 'Trança de massa dourada embalada em bandeja, com etiqueta da Padaria Ágape Miguel Pereira', caption: 'Trança recheada de coco' },
   { id: 'pao-frances', name: 'Pão francês', chapter: 'fornada', image: 'pao-frances',
     alt: 'Pães franceses dourados reunidos em uma cesta', caption: 'Pão francês' },
-  { id: 'padeiros', name: 'Nossos padeiros', chapter: 'fornada', image: 'padeiros',
-    alt: 'Quatro padeiros sorrindo lado a lado, de camiseta branca com o logo da Padaria Ágape, três deles de boné preto, dentro da loja com parede de tijolinho preto ao fundo', caption: 'Nossos padeiros' },
   // Capítulo III — Confeitaria
   { id: 'torta-pudim', name: 'Torta Pudim', chapter: 'confeitaria', image: 'torta-pudim',
     alt: 'Torta em camadas com cobertura branca escorrida e topo alaranjado, vista em corte', caption: 'Torta Pudim em corte' },

@@ -79,7 +79,7 @@ Originais em `assets/originais/{instagram,maps-arcozelo,maps-miguel}`. Catálogo
 | maps-mig-10 | pão na chapa + suco na mesa | paisagem | café da manhã |
 | post-DZz82hDEUnh-1/2 | Torta Pudim | retrato 1080×1350 | destaque "novidade" |
 | post-De5L3iXRbiT-1 | bolo de festa (natal) | retrato 3024×4032 | encomendas |
-| post-DakqP89Fzo- | padeiros (adultos) + arte Dia do Padeiro | retrato 1350×1687 | equipe (recortar a parte da foto) |
+| post-DakqP89Fzo- | padeiros (adultos) + arte Dia do Padeiro | retrato 1350×1687 | ~~equipe~~ — removida a pedido da padaria (revisão final) |
 | post-Dd88EzQRB1z | convite reinauguração (preto/dourado) | retrato | referência visual, não usar como foto |
 | ig-perfil-01 | selo "Ágape Arcozelo – Desde 2012" | 150×150 | **recriar em SVG** (não ampliar o JPEG) |
 | ig-destaque-04 | logo "padaria ágape gourmet – Miguel Pereira" | 150×150 | referência para o selo da casa Miguel (tipográfico) |

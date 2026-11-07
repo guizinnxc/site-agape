@@ -30,5 +30,4 @@ export const IMAGES = [
   item('torta-pudim', 'instagram/post-DZz82hDEUnh-2.jpg'),
   item('torta-pudim-duo', 'instagram/post-DZz82hDEUnh-1.jpg', { crop: { left: 0, top: 0.28, width: 1, height: 0.72 } }),
   item('bolo-festa', 'instagram/post-De5L3iXRbiT-1.jpg'),
-  item('padeiros', 'instagram/post-DakqP89Fzo--1.jpg', { crop: { left: 0, top: 0, width: 1, height: 0.56 } }),
 ];

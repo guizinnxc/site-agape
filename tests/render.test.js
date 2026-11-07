@@ -165,6 +165,12 @@ describe('renderPage — componentes', () => {
     expect(track.querySelectorAll('a.shot').length).toBeGreaterThanOrEqual(4);
   });
 
+  it('fornada sem a faixa dos padeiros', () => {
+    expect(document.querySelector('.fornada__band')).toBeNull();
+    expect(document.querySelector('[data-lightbox="padeiros"]')).toBeNull();
+    expect(manifest.padeiros).toBeUndefined();
+  });
+
   it('fornada: ordem do DOM = ordem visual (destaque primeiro)', () => {
     const ids = all('#cap-2 .fornada a.shot').map((a) => a.getAttribute('data-lightbox'));
     expect(ids).toEqual(['paes-estante', 'sonhos', 'tranca-coco', 'pao-frances']);

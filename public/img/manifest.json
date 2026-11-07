@@ -225,16 +225,5 @@
     ],
     "focal": "50% 50%",
     "credit": "instagram"
-  },
-  "padeiros": {
-    "width": 1350,
-    "height": 945,
-    "widths": [
-      480,
-      960,
-      1350
-    ],
-    "focal": "50% 50%",
-    "credit": "instagram"
   }
 }

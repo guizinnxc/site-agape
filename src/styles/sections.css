@@ -218,56 +218,6 @@
   }
 }
 
-/* Padeiros: faixa larga sangrando, legenda sobre a foto. */
-.fornada__band {
-  grid-column: full;
-  position: relative;
-  --ratio: 4 / 3;
-}
-
-.fornada__band img {
-  object-position: 50% 30% !important;
-}
-
-.fornada__band figcaption {
-  position: absolute;
-  left: var(--gutter);
-  bottom: var(--space-m);
-  margin: 0;
-  pointer-events: none;
-  font-family: var(--font-display);
-  font-size: var(--step-3);
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--cream);
-  text-shadow: 0 2px 20px rgb(15 13 11 / 0.8);
-}
-
-.fornada__band figcaption::before {
-  display: none;
-}
-
-.fornada__band .shot::after {
-  content: '';
-  position: absolute;
-  inset: 45% 0 0;
-  pointer-events: none;
-  background: linear-gradient(to top, rgb(15 13 11 / 0.85), transparent);
-}
-
-@media (min-width: 700px) {
-  .fornada__band {
-    --ratio: 16 / 7;
-  }
-
-  .fornada__band figcaption {
-    left: max(var(--gutter), (100% - var(--content)) / 2);
-    bottom: var(--space-l);
-  }
-}
-
 /* Também no balcão: lista tipográfica, como um quadro de giz. */
 .also-made {
   display: grid;

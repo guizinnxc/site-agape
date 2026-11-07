@@ -116,13 +116,10 @@ const FORNADA_ROLES = {
   'tranca-coco': { role: 'offset-b', sizes: '(min-width: 1024px) 30vw, (min-width: 700px) 45vw, 100vw' },
   'pao-frances': { role: 'detail', sizes: '(min-width: 700px) 24vw, 70vw' },
 };
-const BAND_ID = 'padeiros';
 
 function renderFornada() {
   const items = byChapter('fornada');
-  const band = items.find((p) => p.id === BAND_ID);
   const grid = items
-    .filter((p) => p !== band)
     .map((p) => {
       const r = FORNADA_ROLES[p.id] || { role: 'extra', sizes: '(min-width: 700px) 45vw, 100vw' };
       return productFigure(p, { className: `fornada__item fornada__item--${r.role}`, sizes: r.sizes });
@@ -135,7 +132,6 @@ function renderFornada() {
       'Pão francês, sonho, trança recheada de coco e os pães da casa: delícias artesanais todos os dias, direto da fornada para o balcão.'
     ) +
     `<div class="fornada">${grid}</div>` +
-    (band ? productFigure(band, { className: 'fornada__band', sizes: '100vw' }) : '') +
     `<div class="also-made" data-reveal>` +
     `<h3 class="also-made__title">Também no balcão</h3>` +
     `<ul class="also-made__list">${also}</ul>` +
