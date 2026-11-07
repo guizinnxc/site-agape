@@ -170,7 +170,7 @@
   letter-spacing: 0.12em;
 }
 
-/* Na prateleira, a etiqueta "Novidade" fica sobre a foto, como na vitrine. */
+/* Na prateleira, uma etiqueta (campo tag do produto) fica sobre a foto, como na vitrine. */
 .strip__figure {
   position: relative;
 }

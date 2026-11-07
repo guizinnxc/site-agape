@@ -75,8 +75,8 @@ export const products = [
   { id: 'padeiros', name: 'Nossos padeiros', chapter: 'fornada', image: 'padeiros',
     alt: 'Quatro padeiros sorrindo lado a lado, de camiseta branca com o logo da Padaria Ágape, três deles de boné preto, dentro da loja com parede de tijolinho preto ao fundo', caption: 'Nossos padeiros' },
   // Capítulo III — Confeitaria
-  { id: 'torta-pudim', name: 'Torta Pudim', chapter: 'confeitaria', image: 'torta-pudim', tag: 'Novidade',
-    alt: 'Torta em camadas com cobertura branca escorrida e topo alaranjado, vista em corte', caption: 'Torta Pudim, a novidade da casa' },
+  { id: 'torta-pudim', name: 'Torta Pudim', chapter: 'confeitaria', image: 'torta-pudim',
+    alt: 'Torta em camadas com cobertura branca escorrida e topo alaranjado, vista em corte', caption: 'Torta Pudim em corte' },
   { id: 'torta-pudim-duo', name: 'Torta Pudim', chapter: 'confeitaria', image: 'torta-pudim-duo',
     alt: 'Duas tortas retangulares em bandejas brancas, uma com cobertura clara e outra com raspas de chocolate', caption: 'Torta Pudim' },
   { id: 'rocambole', name: 'Rocambole', chapter: 'confeitaria', image: 'rocambole',
@@ -113,4 +113,5 @@ export const pending = [
   'Preços: não exibidos (etiquetas nas fotos de clientes são antigas).',
   'Qual loja atende o WhatsApp e área de delivery: texto genérico "Encomendas e delivery".',
   'Autorização formal de uso das fotos de clientes do Maps: créditos no rodapé e nota no README.',
+  'Confirmar se a Torta Pudim ainda é novidade (post de junho de 2026): o site não usa mais a etiqueta "Novidade".',
 ];

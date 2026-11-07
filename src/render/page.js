@@ -174,7 +174,7 @@ function renderConfeitaria() {
   const inner =
     chapterHead(
       'confeitaria',
-      'Na vitrine de doces, a novidade é a Torta Pudim. Ao lado dela, rocambole, torta surpresa de morango com chocolate e bolos que pedem um café.'
+      'Na vitrine de doces, a Torta Pudim divide espaço com rocambole, torta surpresa de morango com chocolate e bolos que pedem um café.'
     ) +
     `<div class="strip" data-carousel>` +
     `<ul class="strip__track" data-carousel-track tabindex="0" aria-label="Confeitaria">${cards}</ul>` +

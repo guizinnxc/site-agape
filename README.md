@@ -69,6 +69,8 @@ Vêm de `pending` em `src/content.js` e dependem da padaria:
 - **WhatsApp e delivery**: falta confirmar qual loja atende o número e qual é a área de entrega; o site
   usa o texto genérico "Encomendas e delivery".
 - **Autorização das fotos de clientes do Google Maps** (ver abaixo).
+- **Torta Pudim ainda é novidade?** O post é de junho de 2026; o site deixou de usar a etiqueta
+  "Novidade" até a padaria confirmar.
 
 ## Créditos e aviso sobre as fotos
 
